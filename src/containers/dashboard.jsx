@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import { Table } from "antd";
 import { data } from "../misc";
 
@@ -7,7 +8,7 @@ const columns = [
     title: "Test Runner ID",
     dataIndex: "uuid",
     key: "uuid",
-    render: uuid => <a href="hello">{uuid}</a>
+    render: uuid => <NavLink to={`/${uuid}`}>{uuid}</NavLink>
   },
   {
     title: "Device",

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Dashboard from "./containers/dashboard";
+import TestDetail from "./containers/testDetail";
 import "./App.css";
 
 class App extends Component {
@@ -8,7 +9,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Dashboard />
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/:id" component={TestDetail} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
