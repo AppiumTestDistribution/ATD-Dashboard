@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 import { Table } from "antd";
-import { data } from "../misc";
+import { fetchTestResult } from "./action";
+import { NAME } from "./constant";
 
 const columns = [
   {
@@ -49,13 +51,28 @@ const columns = [
 ];
 
 class Dashboard extends Component {
+  async componentDidMount() {
+    await this.props.fetchTestResult();
+  }
+
   render() {
     return (
       <div>
-        <Table columns={columns} dataSource={data} bordered />
+        <Table columns={columns} dataSource={this.props.testResult} bordered />
       </div>
     );
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  testResult: state[NAME].testResult
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchTestResult: () => dispatch(fetchTestResult())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);
