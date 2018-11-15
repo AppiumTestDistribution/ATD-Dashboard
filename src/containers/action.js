@@ -1,5 +1,6 @@
 import { apiClient } from "../service";
 import { FETCH_TEST_RESULT } from "./constant";
+import { transformApiResponse } from "../helper/transformApiResponse";
 
 const handleSuccess = (type, payload) => ({
   type,
@@ -9,7 +10,8 @@ const handleSuccess = (type, payload) => ({
 export const fetchTestResult = () => async dispatch => {
   try {
     const result = await apiClient();
-    dispatch(handleSuccess(FETCH_TEST_RESULT, result));
+    const transformedResponse = transformApiResponse(result);
+    dispatch(handleSuccess(FETCH_TEST_RESULT, transformedResponse));
   } catch (error) {
     console.log(error);
   }

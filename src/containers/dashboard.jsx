@@ -25,12 +25,6 @@ const columns = [
     sorter: (a, b) => a.os.length - b.os.length
   },
   {
-    title: "Duration",
-    key: "duration",
-    dataIndex: "duration",
-    sorter: (a, b) => a.duration - b.duration
-  },
-  {
     title: "Total",
     key: "total",
     dataIndex: "total",
