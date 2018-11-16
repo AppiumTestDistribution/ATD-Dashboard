@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { Table } from "antd";
+import { Table, Badge } from "antd";
 import { fetchTestResult } from "./action";
 import { NAME } from "./constant";
+import Icon from "../components/icon";
 
 const columns = [
   {
@@ -22,25 +23,37 @@ const columns = [
     title: "OS",
     dataIndex: "os",
     key: "os",
-    sorter: (a, b) => a.os.length - b.os.length
+    sorter: (a, b) => a.os.length - b.os.length,
+    render: (os, row) => (
+      <div>
+        <Icon type={os} size={18} /> {row.osVersion}
+      </div>
+    )
   },
   {
     title: "Total",
     key: "total",
     dataIndex: "total",
-    sorter: (a, b) => a.total - b.total
+    sorter: (a, b) => a.total - b.total,
+    render: total => (
+      <Badge count={total} style={{ backgroundColor: "#8470ff" }} />
+    )
   },
   {
     title: "Passed",
     key: "passed",
     dataIndex: "passed",
-    sorter: (a, b) => a.passed - b.passed
+    sorter: (a, b) => a.passed - b.passed,
+    render: passed => (
+      <Badge count={passed} style={{ backgroundColor: "#228B22" }} />
+    )
   },
   {
     title: "Failed",
     key: "failed",
     dataIndex: "failed",
-    sorter: (a, b) => a.failed - b.failed
+    sorter: (a, b) => a.failed - b.failed,
+    render: failed => <Badge count={failed} />
   }
 ];
 

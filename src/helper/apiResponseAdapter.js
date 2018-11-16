@@ -37,11 +37,8 @@ export const apiResponseAdapter = response => {
       key: udid,
       udid,
       device: findElementValue(response, udid, "name"),
-      os: `${findElementValue(response, udid, "os")} ${findElementValue(
-        response,
-        udid,
-        "osVersion"
-      )}`,
+      os: findElementValue(response, udid, "os"),
+      osVersion: findElementValue(response, udid, "osVersion"),
       total: countTotalTest(response, udid),
       passed: countPassOrFailTest(response, udid, "Pass"),
       failed: countPassOrFailTest(response, udid, "Fail")
