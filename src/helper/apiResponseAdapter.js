@@ -29,8 +29,8 @@ const countPassOrFailTest = (response, udid, status) => {
   return count;
 };
 
-export const transformApiResponse = response => {
-  const transformedResponse = Array.from(
+export const apiResponseAdapter = response => {
+  const result = Array.from(
     new Set(response.map(element => element.deviceinfo.device.udid))
   ).map(udid => {
     return {
@@ -47,5 +47,5 @@ export const transformApiResponse = response => {
       failed: countPassOrFailTest(response, udid, "Fail")
     };
   });
-  return transformedResponse;
+  return result;
 };
