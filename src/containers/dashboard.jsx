@@ -8,8 +8,8 @@ import { NAME } from "./constant";
 const columns = [
   {
     title: "Test Runner ID",
-    dataIndex: "uuid",
-    key: "uuid",
+    dataIndex: "udid",
+    key: "udid",
     render: uuid => <NavLink to={`/${uuid}`}>{uuid}</NavLink>
   },
   {

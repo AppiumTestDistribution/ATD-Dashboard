@@ -1,6 +1,6 @@
 import { apiClient } from "../service";
 import { FETCH_TEST_RESULT } from "./constant";
-import { transformApiResponse } from "../helper/transformApiResponse";
+import { transformApiResponse } from "../helper/apiResponseAdapter";
 
 const handleSuccess = (type, payload) => ({
   type,
