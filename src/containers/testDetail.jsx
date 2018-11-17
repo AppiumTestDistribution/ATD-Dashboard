@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Table } from "antd";
+import { Table, Card } from "antd";
 import { NAME } from "./constant";
 import { fetchDeviceInfo } from "./action";
 
@@ -40,8 +40,16 @@ class TestDetail extends Component {
 
   render() {
     return (
-      <div>
-        <Table columns={columns} dataSource={this.props.deviceInfo} bordered />
+      <div
+        style={{ background: "#ECECEC", padding: "20px", minHeight: "800px" }}
+      >
+        <Card title="Card title" bordered={false}>
+          <Table
+            columns={columns}
+            dataSource={this.props.deviceInfo}
+            bordered
+          />
+        </Card>
       </div>
     );
   }

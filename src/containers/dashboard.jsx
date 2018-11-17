@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { Table, Badge } from "antd";
+import { Table, Badge, Card, Row, Col } from "antd";
+import Chart from "chart.js";
 import { fetchTestResult } from "./action";
 import { NAME } from "./constant";
 import Icon from "../components/icon";
@@ -65,7 +66,25 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <Table columns={columns} dataSource={this.props.testResult} bordered />
+        <Row>
+          <Col span={24}>
+            <div
+              style={{
+                background: "#ECECEC",
+                padding: "20px",
+                minHeight: "800px"
+              }}
+            >
+              <Card title="Card title" bordered={false}>
+                <Table
+                  columns={columns}
+                  dataSource={this.props.testResult}
+                  bordered
+                />
+              </Card>
+            </div>
+          </Col>
+        </Row>
       </div>
     );
   }
