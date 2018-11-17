@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { Table, Badge, Card, Row, Col } from "antd";
-import Chart from "chart.js";
+import Chart from "../components/chart";
 import { fetchTestResult } from "./action";
 import { NAME } from "./constant";
 import Icon from "../components/icon";
@@ -67,24 +67,59 @@ class Dashboard extends Component {
     return (
       <div>
         <Row>
-          <Col span={24}>
+          <Col span={8}>
             <div
               style={{
                 background: "#ECECEC",
-                padding: "20px",
-                minHeight: "800px"
+                padding: "20px"
               }}
             >
               <Card title="Card title" bordered={false}>
-                <Table
-                  columns={columns}
-                  dataSource={this.props.testResult}
-                  bordered
-                />
+                <Chart type="doughnut" />
+              </Card>
+            </div>
+          </Col>
+          <Col span={8}>
+            <div
+              style={{
+                background: "#ECECEC",
+                padding: "20px"
+              }}
+            >
+              <Card title="Card title" bordered={false}>
+                <Chart type="polarArea" />
+              </Card>
+            </div>
+          </Col>
+          <Col span={8}>
+            <div
+              style={{
+                background: "#ECECEC",
+                padding: "20px"
+              }}
+            >
+              <Card title="Card title" bordered={false}>
+                <Chart type="pie" />
               </Card>
             </div>
           </Col>
         </Row>
+
+        <div
+          style={{
+            background: "#ECECEC",
+            padding: "0px 20px 20px 20px",
+            minHeight: "450px"
+          }}
+        >
+          <Card title="Card title" bordered={false}>
+            <Table
+              columns={columns}
+              dataSource={this.props.testResult}
+              bordered
+            />
+          </Card>
+        </div>
       </div>
     );
   }
