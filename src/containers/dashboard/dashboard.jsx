@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { Table, Badge, Card, Row, Col } from "antd";
-import Chart from "../components/chart";
+import Chart from "../../components/chart/chart";
 import { fetchTestResult } from "./action";
 import { NAME } from "./constant";
-import Icon from "../components/icon";
+import Icon from "../../components/icon/icon";
 
 const columns = [
   {

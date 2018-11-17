@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import Dashboard from "./containers/dashboard";
-import TestDetail from "./containers/testDetail";
+import Dashboard from "./containers/dashboard/dashboard";
+import TestDetail from "./containers/testDetail/testDetail";
 import store from "./store";
 import "./App.css";
 

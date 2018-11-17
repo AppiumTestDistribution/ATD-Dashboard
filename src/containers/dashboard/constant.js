@@ -2,4 +2,3 @@ export const NAME = "Dashboard";
 
 export const TRANSFORM_TEST_RESULT = `${NAME}/TRANSFORM_TEST_RESULT`;
 export const FETCH_TEST_RESULT = `${NAME}/FETCH_TEST_RESULT`;
-export const GENERATE_DEVICE_INFO = `${NAME}/GENERATE_DEVICE_INFO`;
