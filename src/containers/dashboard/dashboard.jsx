@@ -136,22 +136,25 @@ class Dashboard extends Component {
             </div>
           </Col>
         </Row>
-
-        <div
-          style={{
-            background: "#ECECEC",
-            padding: "0px 20px 20px 20px",
-            minHeight: "450px"
-          }}
-        >
-          <Card title="Card title" bordered={false}>
-            <Table
-              columns={columns}
-              dataSource={this.props.testResult}
-              bordered
-            />
-          </Card>
-        </div>
+        <Row>
+          <Col span={24}>
+            <div
+              style={{
+                background: "#ECECEC",
+                padding: "0px 20px 20px 20px",
+                minHeight: "450px"
+              }}
+            >
+              <Card title="Card title" bordered={false}>
+                <Table
+                  columns={columns}
+                  dataSource={this.props.testResult}
+                  bordered
+                />
+              </Card>
+            </div>
+          </Col>
+        </Row>
       </div>
     );
   }
