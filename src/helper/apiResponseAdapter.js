@@ -30,19 +30,23 @@ const countPassOrFailTest = (response, udid, status) => {
 };
 
 export const apiResponseAdapter = response => {
-  const result = Array.from(
-    new Set(response.map(element => element.deviceinfo.device.udid))
-  ).map(udid => {
-    return {
-      key: udid,
-      udid,
-      device: findElementValue(response, udid, "name"),
-      os: findElementValue(response, udid, "os"),
-      osVersion: findElementValue(response, udid, "osVersion"),
-      total: countTotalTest(response, udid),
-      passed: countPassOrFailTest(response, udid, "Pass"),
-      failed: countPassOrFailTest(response, udid, "Fail")
-    };
-  });
+  const result = [];
+  const map = new Map();
+  for (const element of response) {
+    const udid = element.deviceinfo.device.udid;
+    if (!map.has(udid)) {
+      map.set(udid, true);
+      result.push({
+        key: udid,
+        udid,
+        device: findElementValue(response, udid, "name"),
+        os: findElementValue(response, udid, "os"),
+        osVersion: findElementValue(response, udid, "osVersion"),
+        total: countTotalTest(response, udid),
+        passed: countPassOrFailTest(response, udid, "Pass"),
+        failed: countPassOrFailTest(response, udid, "Fail")
+      });
+    }
+  }
   return result;
 };
