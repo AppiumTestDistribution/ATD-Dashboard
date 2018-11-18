@@ -58,6 +58,30 @@ const columns = [
   }
 ];
 
+const chartData = {
+  labels: ["Red", "Blue", "Yellow"],
+  datasets: [
+    {
+      label: "# of Likes",
+      data: [12, 19, 3],
+      backgroundColor: [
+        "rgba(255, 99, 132, 1)",
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 206, 86, 1)"
+      ]
+    }
+  ]
+};
+
+const chartOptions = {
+  legend: {
+    display: true,
+    position: "left",
+    labels: {
+      usePointStyle: true
+    }
+  }
+};
 class Dashboard extends Component {
   async componentDidMount() {
     await this.props.fetchTestResult();
@@ -75,7 +99,11 @@ class Dashboard extends Component {
               }}
             >
               <Card title="Card title" bordered={false}>
-                <Chart type="doughnut" />
+                <Chart
+                  type="doughnut"
+                  data={chartData}
+                  options={chartOptions}
+                />
               </Card>
             </div>
           </Col>
@@ -87,7 +115,11 @@ class Dashboard extends Component {
               }}
             >
               <Card title="Card title" bordered={false}>
-                <Chart type="polarArea" />
+                <Chart
+                  type="polarArea"
+                  data={chartData}
+                  options={chartOptions}
+                />
               </Card>
             </div>
           </Col>
@@ -99,7 +131,7 @@ class Dashboard extends Component {
               }}
             >
               <Card title="Card title" bordered={false}>
-                <Chart type="pie" />
+                <Chart type="pie" data={chartData} options={chartOptions} />
               </Card>
             </div>
           </Col>
