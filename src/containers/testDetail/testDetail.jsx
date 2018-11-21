@@ -1,34 +1,47 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Table, Card } from "antd";
+import { Collapse, Card, Table } from "antd";
 import { NAME } from "./constant";
 import { fetchDeviceInfo } from "./action";
+import Icon from "../../components/icon/icon";
+
+const Panel = Collapse.Panel;
 
 const columns = [
   {
-    title: "Class Name",
-    dataIndex: "className",
-    key: "className"
-  },
-  {
     title: "Method Name",
     dataIndex: "methodName",
-    key: "methodName"
+    key: "methodName",
+    width: "30%"
   },
   {
-    title: "Test Result",
+    title: "Status",
     dataIndex: "testResult",
-    key: "testResult"
+    key: "testResult",
+    width: "10%",
+    render: testResult => (
+      <div>
+        <Icon type={testResult} size={18} />
+      </div>
+    )
   },
   {
     title: "Start Time",
+    dataIndex: "startTime",
     key: "startTime",
-    dataIndex: "startTime"
+    width: "20%"
   },
   {
     title: "End Time",
     key: "endTime",
-    dataIndex: "endTime"
+    dataIndex: "endTime",
+    width: "20%"
+  },
+  {
+    title: "Error Message",
+    dataIndex: "errorMessage",
+    key: "errorMessage",
+    width: "20%"
   }
 ];
 
@@ -44,11 +57,20 @@ class TestDetail extends Component {
         style={{ background: "#ECECEC", padding: "20px", minHeight: "800px" }}
       >
         <Card title="Card title" bordered={false}>
-          <Table
-            columns={columns}
-            dataSource={this.props.deviceInfo}
-            bordered
-          />
+          <Collapse>
+            {this.props.deviceInfo.map(element => {
+              return (
+                <Panel header={element.className} key={element.key}>
+                  <Table
+                    columns={columns}
+                    dataSource={element.methods}
+                    bordered
+                    pagination={false}
+                  />
+                </Panel>
+              );
+            })}
+          </Collapse>
         </Card>
       </div>
     );
