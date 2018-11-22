@@ -9,7 +9,7 @@ const handleSuccess = (type, payload) => ({
 
 export const fetchTestResult = () => async dispatch => {
   try {
-    const result = await apiClient();
+    const result = await apiClient.fetchDashboardData();
     dispatch(handleSuccess(FETCH_TEST_RESULT, result));
     const transformedResponse = apiResponseAdapter(result);
     dispatch(handleSuccess(TRANSFORM_TEST_RESULT, transformedResponse));

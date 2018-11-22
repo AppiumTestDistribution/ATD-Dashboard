@@ -1,49 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Collapse, Card, Table, Row, Col, Badge } from "antd";
+import { Collapse, Card, Table, Row, Col, Badge, Button, Modal } from "antd";
 import { NAME } from "./constant";
-import { fetchDeviceInfo } from "./action";
+import { fetchDeviceInfo, fetchErrorScreenshot } from "./action";
 import Icon from "../../components/icon/icon";
 
 const Panel = Collapse.Panel;
 
-const columns = [
-  {
-    title: "Method Name",
-    dataIndex: "methodName",
-    key: "methodName",
-    width: "30%"
-  },
-  {
-    title: "Status",
-    dataIndex: "testResult",
-    key: "testResult",
-    width: "10%",
-    render: testResult => (
-      <div>
-        <Icon type={testResult} size={18} />
-      </div>
-    )
-  },
-  {
-    title: "Start Time",
-    dataIndex: "startTime",
-    key: "startTime",
-    width: "20%"
-  },
-  {
-    title: "End Time",
-    key: "endTime",
-    dataIndex: "endTime",
-    width: "20%"
-  },
-  {
-    title: "Error Message",
-    dataIndex: "errorMessage",
-    key: "errorMessage",
-    width: "20%"
-  }
-];
+const showError = errorMessage => {
+  Modal.error({
+    title: "Error Detail",
+    content: errorMessage,
+    width: "50%"
+  });
+};
 
 const countPassedOrFailedTest = methodList => {
   let passed = 0;
@@ -78,9 +48,76 @@ const headerContent = (className, methodList) => (
 );
 
 class TestDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.columns = [
+      {
+        title: "Method Name",
+        dataIndex: "methodName",
+        key: "methodName",
+        width: "30%"
+      },
+      {
+        title: "Status",
+        dataIndex: "testResult",
+        key: "testResult",
+        width: "10%",
+        render: testResult => (
+          <div>
+            <Icon type={testResult} size={18} />
+          </div>
+        )
+      },
+      {
+        title: "Start Time",
+        dataIndex: "startTime",
+        key: "startTime",
+        width: "20%"
+      },
+      {
+        title: "End Time",
+        key: "endTime",
+        dataIndex: "endTime",
+        width: "20%"
+      },
+      {
+        title: "Logs",
+        dataIndex: "errorMessage",
+        key: "errorMessage",
+        width: "20%",
+        render: (errorMessage, row) =>
+          row.testResult === "Fail" && (
+            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+              <Button onClick={() => showError(errorMessage)}>Error</Button>
+              <Button
+                onClick={() => this.showScreenshot(row.errorScreenshotUrl)}
+              >
+                Screenshot
+              </Button>
+            </div>
+          )
+      }
+    ];
+  }
   async componentDidMount() {
     const { fetchDeviceInfo, match } = this.props;
     await fetchDeviceInfo(match.params.id);
+  }
+
+  async showScreenshot(url) {
+    await this.props.fetchErrorScreenshot(url);
+    Modal.error({
+      title: "Error Screenshot",
+      content: (
+        <img
+          src={this.props.errorScreenshot}
+          alt=""
+          height="100%"
+          width="100%"
+        />
+      ),
+      width: "50%"
+    });
   }
 
   render() {
@@ -129,7 +166,7 @@ class TestDetail extends Component {
                         key={element.key}
                       >
                         <Table
-                          columns={columns}
+                          columns={this.columns}
                           dataSource={element.methods}
                           bordered
                           pagination={false}
@@ -148,11 +185,13 @@ class TestDetail extends Component {
 }
 
 const mapStateToProps = state => ({
-  deviceInfo: state[NAME].deviceInfo
+  deviceInfo: state[NAME].deviceInfo,
+  errorScreenshot: state[NAME].errorScreenshot
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceInfo: udid => dispatch(fetchDeviceInfo(udid))
+  fetchDeviceInfo: udid => dispatch(fetchDeviceInfo(udid)),
+  fetchErrorScreenshot: url => dispatch(fetchErrorScreenshot(url))
 });
 
 export default connect(

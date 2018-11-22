@@ -25,6 +25,9 @@ export const generateDeviceInfo = (response, udid) => {
         endTime: element.endTime,
         errorMessage: element.hasOwnProperty("testException")
           ? element.testException
+          : null,
+        errorScreenshotUrl: element.hasOwnProperty("screenShotFailure")
+          ? element.screenShotFailure
           : null
       });
     }
