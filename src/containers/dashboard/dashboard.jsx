@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { Table, Badge, Card, Row, Col } from "antd";
 import Chart from "../../components/chart/chart";
-import { fetchTestResult } from "./action";
+import { fetchTestResult, fetchChartData } from "./action";
 import { NAME } from "./constant";
 import Icon from "../../components/icon/icon";
 
@@ -58,21 +58,6 @@ const columns = [
   }
 ];
 
-const chartData = {
-  labels: ["Red", "Blue", "Yellow"],
-  datasets: [
-    {
-      label: "# of Likes",
-      data: [12, 19, 3],
-      backgroundColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)"
-      ]
-    }
-  ]
-};
-
 const chartOptions = {
   legend: {
     display: true,
@@ -83,8 +68,22 @@ const chartOptions = {
   }
 };
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.chartData = {
+      labels: ["Passed", "Failed"],
+      datasets: [
+        {
+          data: this.props.chartData,
+          backgroundColor: ["rgba(82, 196, 26, 1)", "rgba(255, 99, 132, 1)"]
+        }
+      ]
+    };
+  }
+
   async componentDidMount() {
     await this.props.fetchTestResult();
+    await this.props.fetchChartData();
   }
 
   render() {
@@ -101,7 +100,7 @@ class Dashboard extends Component {
               <Card title="Card title" bordered={false}>
                 <Chart
                   type="doughnut"
-                  data={chartData}
+                  data={this.chartData}
                   options={chartOptions}
                 />
               </Card>
@@ -117,7 +116,7 @@ class Dashboard extends Component {
               <Card title="Card title" bordered={false}>
                 <Chart
                   type="polarArea"
-                  data={chartData}
+                  data={this.chartData}
                   options={chartOptions}
                 />
               </Card>
@@ -131,7 +130,11 @@ class Dashboard extends Component {
               }}
             >
               <Card title="Card title" bordered={false}>
-                <Chart type="pie" data={chartData} options={chartOptions} />
+                <Chart
+                  type="pie"
+                  data={this.chartData}
+                  options={chartOptions}
+                />
               </Card>
             </div>
           </Col>
@@ -161,11 +164,13 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  testResult: state[NAME].testResult
+  testResult: state[NAME].testResult,
+  chartData: state[NAME].chartData
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTestResult: () => dispatch(fetchTestResult())
+  fetchTestResult: () => dispatch(fetchTestResult()),
+  fetchChartData: () => dispatch(fetchChartData())
 });
 
 export default connect(

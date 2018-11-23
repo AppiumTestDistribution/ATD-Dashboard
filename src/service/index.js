@@ -16,7 +16,7 @@ export const apiClient = {
   fetchScreenshot: async url => {
     try {
       const response = await axios.get(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfbWggTX3x9dnC8qXnphuhFWISOqwsDMA_lvIcHUwiwdsSW4mm",
+        "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
         { responseType: "arraybuffer" }
       );
       const base64 = btoa(
