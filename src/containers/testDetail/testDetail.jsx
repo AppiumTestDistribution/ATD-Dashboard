@@ -154,7 +154,7 @@ class TestDetail extends Component {
                 minHeight: "700px"
               }}
             >
-              <Card title="Card title" bordered={false}>
+              <Card bordered={false}>
                 <Collapse>
                   {this.props.deviceInfo.map(element => {
                     return (

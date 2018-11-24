@@ -1,11 +1,30 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { Table, Badge, Card, Row, Col } from "antd";
+import { Table, Badge, Card, Row, Col, List } from "antd";
 import Chart from "../../components/chart/chart";
 import { fetchTestResult, fetchChartData } from "./action";
 import { NAME } from "./constant";
 import Icon from "../../components/icon/icon";
+import "./dashboard.css";
+
+const data = [
+  {
+    title: "Runner"
+  },
+  {
+    title: "SeleniumVersion"
+  },
+  {
+    title: "AppiumServer"
+  },
+  {
+    title: "Total Devices"
+  },
+  {
+    title: "AppiumClient"
+  }
+];
 
 const columns = [
   {
@@ -97,7 +116,7 @@ class Dashboard extends Component {
                 padding: "20px"
               }}
             >
-              <Card title="Card title" bordered={false}>
+              <Card title="Card title" bordered={false} className="card-height">
                 <Chart
                   type="doughnut"
                   data={this.chartData}
@@ -113,9 +132,9 @@ class Dashboard extends Component {
                 padding: "20px"
               }}
             >
-              <Card title="Card title" bordered={false}>
+              <Card title="Card title" bordered={false} className="card-height">
                 <Chart
-                  type="polarArea"
+                  type="doughnut"
                   data={this.chartData}
                   options={chartOptions}
                 />
@@ -129,11 +148,21 @@ class Dashboard extends Component {
                 padding: "20px"
               }}
             >
-              <Card title="Card title" bordered={false}>
-                <Chart
-                  type="pie"
-                  data={this.chartData}
-                  options={chartOptions}
+              <Card
+                title="Runner Info"
+                bordered={false}
+                className="card-height"
+              >
+                <List
+                  size="small"
+                  itemLayout="horizontal"
+                  dataSource={data}
+                  renderItem={item => (
+                    <List.Item>
+                      <List.Item.Meta title={item.title} />
+                      <div>Content</div>
+                    </List.Item>
+                  )}
                 />
               </Card>
             </div>
