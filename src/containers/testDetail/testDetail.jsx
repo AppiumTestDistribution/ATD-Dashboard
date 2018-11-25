@@ -1,11 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Collapse, Card, Table, Row, Col, Badge, Button, Modal } from "antd";
+import {
+  Collapse,
+  Card,
+  Table,
+  Row,
+  Col,
+  Badge,
+  Button,
+  Modal,
+  Tooltip
+} from "antd";
 import { NAME } from "./constant";
 import { fetchDeviceInfo, fetchErrorScreenshot } from "./action";
 import Icon from "../../components/icon/icon";
 
 const Panel = Collapse.Panel;
+
+const statusIconDesc = {
+  fail: "Failed",
+  pass: "Passed"
+};
 
 const showError = errorMessage => {
   Modal.error({
@@ -32,17 +47,23 @@ const headerContent = (className, methodList) => (
   <div style={{ display: "flex", justifyContent: "space-between" }}>
     <div>{className}</div>
     <div style={{ marginRight: "20px" }}>
-      <Badge
-        showZero
-        count={methodList.length}
-        style={{ backgroundColor: "#8470ff", marginRight: "5px" }}
-      />
-      <Badge
-        showZero
-        count={countPassedOrFailedTest(methodList).passed}
-        style={{ backgroundColor: "#228B22", marginRight: "5px" }}
-      />
-      <Badge showZero count={countPassedOrFailedTest(methodList).failed} />
+      <Tooltip title="Total Test">
+        <Badge
+          showZero
+          count={methodList.length}
+          style={{ backgroundColor: "#8470ff", marginRight: "5px" }}
+        />
+      </Tooltip>
+      <Tooltip title="Passed Test">
+        <Badge
+          showZero
+          count={countPassedOrFailedTest(methodList).passed}
+          style={{ backgroundColor: "#228B22", marginRight: "5px" }}
+        />
+      </Tooltip>
+      <Tooltip title="Failed Test">
+        <Badge showZero count={countPassedOrFailedTest(methodList).failed} />
+      </Tooltip>
     </div>
   </div>
 );
@@ -63,9 +84,14 @@ class TestDetail extends Component {
         key: "testResult",
         width: "10%",
         render: testResult => (
-          <div>
-            <Icon type={testResult} size={18} />
-          </div>
+          <Tooltip
+            title={statusIconDesc[testResult.toLowerCase()]}
+            placement="right"
+          >
+            <div style={{ cursor: "pointer", width: "18px" }}>
+              <Icon type={testResult} size={18} />
+            </div>
+          </Tooltip>
         )
       },
       {
