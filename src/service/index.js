@@ -29,5 +29,17 @@ export const apiClient = {
     } catch (error) {
       throw error;
     }
+  },
+  fetchRunnerDetail: async () => {
+    try {
+      const response = await axios({
+        url: "env.json",
+        method: "GET",
+        mode: "cors"
+      });
+      return response.data;
+    } catch (err) {
+      throw err;
+    }
   }
 };

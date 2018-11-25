@@ -3,28 +3,14 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { Table, Badge, Card, Row, Col, List } from "antd";
 import Chart from "../../components/chart/chart";
-import { fetchTestResult, fetchChartData } from "./action";
+import {
+  fetchDashboardData,
+  fetchChartData,
+  fetchRunnerDetail
+} from "./action";
 import { NAME } from "./constant";
 import Icon from "../../components/icon/icon";
 import "./dashboard.css";
-
-const data = [
-  {
-    title: "Runner"
-  },
-  {
-    title: "SeleniumVersion"
-  },
-  {
-    title: "AppiumServer"
-  },
-  {
-    title: "Total Devices"
-  },
-  {
-    title: "AppiumClient"
-  }
-];
 
 const columns = [
   {
@@ -101,8 +87,9 @@ class Dashboard extends Component {
   }
 
   async componentDidMount() {
-    await this.props.fetchTestResult();
+    await this.props.fetchDashboardData();
     await this.props.fetchChartData();
+    await this.props.fetchRunnerDetail();
   }
 
   render() {
@@ -156,11 +143,11 @@ class Dashboard extends Component {
                 <List
                   size="small"
                   itemLayout="horizontal"
-                  dataSource={data}
+                  dataSource={this.props.envInfo}
                   renderItem={item => (
                     <List.Item>
                       <List.Item.Meta title={item.title} />
-                      <div>Content</div>
+                      <div>{item.value}</div>
                     </List.Item>
                   )}
                 />
@@ -194,12 +181,14 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   testResult: state[NAME].testResult,
-  chartData: state[NAME].chartData
+  chartData: state[NAME].chartData,
+  envInfo: state[NAME].envInfo
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTestResult: () => dispatch(fetchTestResult()),
-  fetchChartData: () => dispatch(fetchChartData())
+  fetchDashboardData: () => dispatch(fetchDashboardData()),
+  fetchChartData: () => dispatch(fetchChartData()),
+  fetchRunnerDetail: () => dispatch(fetchRunnerDetail())
 });
 
 export default connect(

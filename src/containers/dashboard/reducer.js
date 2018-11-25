@@ -3,14 +3,16 @@ import update from "immutability-helper";
 import {
   FETCH_TEST_RESULT,
   TRANSFORM_TEST_RESULT,
-  GENERATE_CHART_DATA
+  GENERATE_CHART_DATA,
+  FETCH_RUNNER_DETAIL
 } from "./constant";
 
 const initialState = {
   originalResponse: [],
   testResult: [],
   loading: false,
-  chartData: []
+  chartData: [],
+  envInfo: []
 };
 
 export default handleActions(
@@ -36,6 +38,15 @@ export default handleActions(
     [GENERATE_CHART_DATA]: (state, { payload }) =>
       update(state, {
         chartData: {
+          $set: payload
+        },
+        loading: {
+          $set: false
+        }
+      }),
+    [FETCH_RUNNER_DETAIL]: (state, { payload }) =>
+      update(state, {
+        envInfo: {
           $set: payload
         },
         loading: {
