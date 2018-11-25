@@ -8,9 +8,21 @@ const iconType = {
   pass: "check-circle"
 };
 
+const iconStyle = {
+  ios: { theme: "filled", twoToneColor: "" },
+  android: { theme: "filled", twoToneColor: "" },
+  fail: { theme: "twoTone", twoToneColor: "#ff0000" },
+  pass: { theme: "twoTone", twoToneColor: "#52c41a" }
+};
+
 const Icon = ({ type, size }) => {
   return (
-    <AntIcon type={iconType[type.toLowerCase()]} style={{ fontSize: size }} />
+    <AntIcon
+      type={iconType[type.toLowerCase()]}
+      style={{ fontSize: size }}
+      theme={iconStyle[type.toLowerCase()].theme}
+      twoToneColor={iconStyle[type.toLowerCase()].twoToneColor}
+    />
   );
 };
 
