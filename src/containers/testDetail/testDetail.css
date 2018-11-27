@@ -1,0 +1,6 @@
+.test-detail-card-height {
+  height: 360px;
+}
+.ant-list-item-content {
+  flex: auto !important;
+}

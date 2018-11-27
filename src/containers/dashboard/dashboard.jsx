@@ -103,23 +103,11 @@ class Dashboard extends Component {
                 padding: "20px"
               }}
             >
-              <Card title="Card title" bordered={false} className="card-height">
-                <Chart
-                  type="doughnut"
-                  data={this.chartData}
-                  options={chartOptions}
-                />
-              </Card>
-            </div>
-          </Col>
-          <Col span={8}>
-            <div
-              style={{
-                background: "#ECECEC",
-                padding: "20px"
-              }}
-            >
-              <Card title="Card title" bordered={false} className="card-height">
+              <Card
+                title="Card title"
+                bordered={false}
+                className="dashboard-card-height"
+              >
                 <Chart
                   type="doughnut"
                   data={this.chartData}
@@ -136,9 +124,29 @@ class Dashboard extends Component {
               }}
             >
               <Card
-                title="Runner Info"
+                title="Card title"
                 bordered={false}
-                className="card-height"
+                className="dashboard-card-height"
+              >
+                <Chart
+                  type="doughnut"
+                  data={this.chartData}
+                  options={chartOptions}
+                />
+              </Card>
+            </div>
+          </Col>
+          <Col span={8}>
+            <div
+              style={{
+                background: "#ECECEC",
+                padding: "20px"
+              }}
+            >
+              <Card
+                title="RUNNER INFO"
+                bordered={false}
+                className="dashboard-card-height"
               >
                 <List
                   size="small"

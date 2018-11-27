@@ -9,11 +9,17 @@ import {
   Badge,
   Button,
   Modal,
-  Tooltip
+  Tooltip,
+  List
 } from "antd";
 import { NAME } from "./constant";
-import { fetchDeviceInfo, fetchErrorScreenshot } from "./action";
+import {
+  fetchTestRunnerDetail,
+  fetchErrorScreenshot,
+  fetchDeviceInfo
+} from "./action";
 import Icon from "../../components/icon/icon";
+import "./testDetail.css";
 
 const Panel = Collapse.Panel;
 
@@ -126,7 +132,8 @@ class TestDetail extends Component {
     ];
   }
   async componentDidMount() {
-    const { fetchDeviceInfo, match } = this.props;
+    const { fetchTestRunnerDetail, fetchDeviceInfo, match } = this.props;
+    await fetchTestRunnerDetail(match.params.id);
     await fetchDeviceInfo(match.params.id);
   }
 
@@ -157,7 +164,11 @@ class TestDetail extends Component {
                 padding: "20px"
               }}
             >
-              <Card title="Card title" bordered={false} />
+              <Card
+                title="TEST RESULTS"
+                bordered={false}
+                className="test-detail-card-height"
+              />
             </div>
           </Col>
           <Col span={8}>
@@ -167,7 +178,23 @@ class TestDetail extends Component {
                 padding: "20px"
               }}
             >
-              <Card title="Card title" bordered={false} />
+              <Card
+                title="DEVICE"
+                bordered={false}
+                className="test-detail-card-height"
+              >
+                <List
+                  size="small"
+                  itemLayout="horizontal"
+                  dataSource={this.props.deviceInfo}
+                  renderItem={item => (
+                    <List.Item>
+                      <List.Item.Meta title={item.title} />
+                      <div>{item.value}</div>
+                    </List.Item>
+                  )}
+                />
+              </Card>
             </div>
           </Col>
         </Row>
@@ -182,7 +209,7 @@ class TestDetail extends Component {
             >
               <Card bordered={false}>
                 <Collapse>
-                  {this.props.deviceInfo.map(element => {
+                  {this.props.testRunnerDetail.map(element => {
                     return (
                       <Panel
                         header={headerContent(
@@ -211,13 +238,15 @@ class TestDetail extends Component {
 }
 
 const mapStateToProps = state => ({
-  deviceInfo: state[NAME].deviceInfo,
-  errorScreenshot: state[NAME].errorScreenshot
+  testRunnerDetail: state[NAME].testRunnerDetail,
+  errorScreenshot: state[NAME].errorScreenshot,
+  deviceInfo: state[NAME].deviceInfo
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceInfo: udid => dispatch(fetchDeviceInfo(udid)),
-  fetchErrorScreenshot: url => dispatch(fetchErrorScreenshot(url))
+  fetchTestRunnerDetail: udid => dispatch(fetchTestRunnerDetail(udid)),
+  fetchErrorScreenshot: url => dispatch(fetchErrorScreenshot(url)),
+  fetchDeviceInfo: udid => dispatch(fetchDeviceInfo(udid))
 });
 
 export default connect(

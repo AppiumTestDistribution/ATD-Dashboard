@@ -1,11 +1,13 @@
 import { apiResponseAdapter } from "./apiResponseAdapter";
-import { generateDeviceInfo } from "./generateDeviceInfo";
+import { generateTestRunnerDetail } from "./generateTestRunnerDetail";
 import { generateChartData } from "./generateChartData";
 import { generateEnvInfo } from "./generateEnvInfo";
+import { generateDeviceInfo } from "./generateDeviceInfo";
 
 export {
   apiResponseAdapter,
-  generateDeviceInfo,
+  generateTestRunnerDetail,
   generateChartData,
-  generateEnvInfo
+  generateEnvInfo,
+  generateDeviceInfo
 };

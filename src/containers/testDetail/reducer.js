@@ -1,18 +1,23 @@
 import { handleActions } from "redux-actions";
 import update from "immutability-helper";
-import { GENERATE_DEVICE_INFO, FETCH_ERROR_SCREENSHOT } from "./constant";
+import {
+  GENERATE_TEST_RUNNER_DETAIL,
+  FETCH_ERROR_SCREENSHOT,
+  GENERATE_DEVICE_INFO
+} from "./constant";
 
 const initialState = {
-  deviceInfo: [],
+  testRunnerDetail: [],
   loading: false,
-  errorScreenshot: ""
+  errorScreenshot: "",
+  deviceInfo: []
 };
 
 export default handleActions(
   {
-    [GENERATE_DEVICE_INFO]: (state, { payload }) =>
+    [GENERATE_TEST_RUNNER_DETAIL]: (state, { payload }) =>
       update(state, {
-        deviceInfo: {
+        testRunnerDetail: {
           $set: payload
         },
         loading: {
@@ -22,6 +27,15 @@ export default handleActions(
     [FETCH_ERROR_SCREENSHOT]: (state, { payload }) =>
       update(state, {
         errorScreenshot: {
+          $set: payload
+        },
+        loading: {
+          $set: false
+        }
+      }),
+    [GENERATE_DEVICE_INFO]: (state, { payload }) =>
+      update(state, {
+        deviceInfo: {
           $set: payload
         },
         loading: {
