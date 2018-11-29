@@ -26,7 +26,8 @@ const Panel = Collapse.Panel;
 
 const statusIconDesc = {
   fail: "Failed",
-  pass: "Passed"
+  pass: "Passed",
+  skip: "Skipped"
 };
 
 const showError = errorMessage => {
