@@ -66,7 +66,7 @@ const columns = [
 const chartOptions = {
   legend: {
     display: true,
-    position: "left",
+    position: "right",
     labels: {
       usePointStyle: true
     }
@@ -112,6 +112,8 @@ class Dashboard extends Component {
                   type="doughnut"
                   data={this.chartData}
                   options={chartOptions}
+                  height="400px"
+                  width="400px"
                 />
               </Card>
             </div>
@@ -132,6 +134,8 @@ class Dashboard extends Component {
                   type="doughnut"
                   data={this.chartData}
                   options={chartOptions}
+                  height="400px"
+                  width="400px"
                 />
               </Card>
             </div>

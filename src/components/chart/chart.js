@@ -12,8 +12,9 @@ class Chart extends Component {
   }
 
   render() {
+    const { width, height } = this.props;
     return (
-      <div>
+      <div style={{ width, height }}>
         <canvas ref={node => (this.chartRef = node)} />
       </div>
     );

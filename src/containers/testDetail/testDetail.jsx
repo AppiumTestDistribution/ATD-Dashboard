@@ -20,6 +20,7 @@ import {
 } from "./action";
 import Icon from "../../components/icon/icon";
 import "./testDetail.css";
+import Chart from "../../components/chart/chart";
 
 const Panel = Collapse.Panel;
 
@@ -73,6 +74,16 @@ const headerContent = (className, methodList) => (
     </div>
   </div>
 );
+
+const chartOptions = {
+  legend: {
+    display: true,
+    position: "right",
+    labels: {
+      usePointStyle: true
+    }
+  }
+};
 
 class TestDetail extends Component {
   constructor(props) {
@@ -130,6 +141,15 @@ class TestDetail extends Component {
           )
       }
     ];
+    this.chartData = {
+      labels: ["Passed", "Failed"],
+      datasets: [
+        {
+          data: [12, 34],
+          backgroundColor: ["rgba(82, 196, 26, 1)", "rgba(255, 99, 132, 1)"]
+        }
+      ]
+    };
   }
   async componentDidMount() {
     const { fetchTestRunnerDetail, fetchDeviceInfo, match } = this.props;
@@ -168,7 +188,15 @@ class TestDetail extends Component {
                 title="TEST RESULTS"
                 bordered={false}
                 className="test-detail-card-height"
-              />
+              >
+                <Chart
+                  type="doughnut"
+                  data={this.chartData}
+                  options={chartOptions}
+                  height="400px"
+                  width="400px"
+                />
+              </Card>
             </div>
           </Col>
           <Col span={8}>
