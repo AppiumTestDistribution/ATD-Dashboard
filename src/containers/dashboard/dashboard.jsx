@@ -51,7 +51,7 @@ const columns = [
     dataIndex: "passed",
     sorter: (a, b) => a.passed - b.passed,
     render: passed => (
-      <Badge count={passed} style={{ backgroundColor: "#228B22" }} />
+      <Badge count={passed} style={{ backgroundColor: "#228B22" }} showZero />
     )
   },
   {
@@ -59,7 +59,14 @@ const columns = [
     key: "failed",
     dataIndex: "failed",
     sorter: (a, b) => a.failed - b.failed,
-    render: failed => <Badge count={failed} />
+    render: failed => <Badge count={failed} showZero />
+  },
+  {
+    title: "Skipped",
+    key: "skipped",
+    dataIndex: "skipped",
+    sorter: (a, b) => a.skipped - b.skipped,
+    render: skipped => <Badge count={skipped} showZero />
   }
 ];
 

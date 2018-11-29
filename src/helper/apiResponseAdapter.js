@@ -15,7 +15,7 @@ const countTotalTest = (response, udid) => {
   return count;
 };
 
-const countPassOrFailTest = (response, udid, status) => {
+const countTestByStatus = (response, udid, status) => {
   let count = 0;
   response.forEach(element => {
     if (
@@ -43,8 +43,9 @@ export const apiResponseAdapter = response => {
         os: findElementValue(response, udid, "os"),
         osVersion: findElementValue(response, udid, "osVersion"),
         total: countTotalTest(response, udid),
-        passed: countPassOrFailTest(response, udid, "Pass"),
-        failed: countPassOrFailTest(response, udid, "Fail")
+        passed: countTestByStatus(response, udid, "Pass"),
+        failed: countTestByStatus(response, udid, "Fail"),
+        skipped: countTestByStatus(response, udid, "Skip")
       });
     }
   }
