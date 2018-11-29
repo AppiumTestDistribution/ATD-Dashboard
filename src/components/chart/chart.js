@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ChartJS from "chart.js";
+import "chartjs-plugin-labels";
 
 class Chart extends Component {
   componentDidMount() {

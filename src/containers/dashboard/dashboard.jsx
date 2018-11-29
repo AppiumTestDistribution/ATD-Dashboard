@@ -79,6 +79,15 @@ const chartOptions = {
     labels: {
       usePointStyle: true
     }
+  },
+  plugins: {
+    labels: {
+      render: "percentage",
+      fontColor: "black",
+      precision: 2,
+      fontSize: 13,
+      textShadow: true
+    }
   }
 };
 class Dashboard extends Component {
