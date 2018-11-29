@@ -6,7 +6,7 @@ const iconType = {
   android: "android",
   fail: "exclamation-circle",
   pass: "check-circle",
-  skip: "exclamation-circle"
+  skip: "question-circle"
 };
 
 const iconStyle = {
@@ -14,7 +14,7 @@ const iconStyle = {
   android: { theme: "filled", twoToneColor: "" },
   fail: { theme: "twoTone", twoToneColor: "#ff0000" },
   pass: { theme: "twoTone", twoToneColor: "#52c41a" },
-  skip: { theme: "twoTone", twoToneColor: "#52c41a" }
+  skip: { theme: "twoTone", twoToneColor: "#FFC200" }
 };
 
 const Icon = ({ type, size }) => {

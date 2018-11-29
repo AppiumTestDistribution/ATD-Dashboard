@@ -55,18 +55,20 @@ const columns = [
     )
   },
   {
+    title: "Skipped",
+    key: "skipped",
+    dataIndex: "skipped",
+    sorter: (a, b) => a.skipped - b.skipped,
+    render: skipped => (
+      <Badge count={skipped} style={{ backgroundColor: "#FFC200" }} showZero />
+    )
+  },
+  {
     title: "Failed",
     key: "failed",
     dataIndex: "failed",
     sorter: (a, b) => a.failed - b.failed,
     render: failed => <Badge count={failed} showZero />
-  },
-  {
-    title: "Skipped",
-    key: "skipped",
-    dataIndex: "skipped",
-    sorter: (a, b) => a.skipped - b.skipped,
-    render: skipped => <Badge count={skipped} showZero />
   }
 ];
 
@@ -83,11 +85,15 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.chartData = {
-      labels: ["Passed", "Failed"],
+      labels: ["Passed", "Failed", "Skipped"],
       datasets: [
         {
           data: this.props.chartData,
-          backgroundColor: ["rgba(82, 196, 26, 1)", "rgba(255, 99, 132, 1)"]
+          backgroundColor: [
+            "rgba(82, 196, 26, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 194, 0, 1)"
+          ]
         }
       ]
     };
@@ -179,8 +185,7 @@ class Dashboard extends Component {
             <div
               style={{
                 background: "#ECECEC",
-                padding: "0px 20px 20px 20px",
-                minHeight: "450px"
+                padding: "0px 20px 20px 20px"
               }}
             >
               <Card title="Card title" bordered={false}>

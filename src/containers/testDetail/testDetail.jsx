@@ -231,8 +231,7 @@ class TestDetail extends Component {
             <div
               style={{
                 background: "#ECECEC",
-                padding: "0px 20px 20px 20px",
-                minHeight: "700px"
+                padding: "0px 20px 20px 20px"
               }}
             >
               <Card bordered={false}>
