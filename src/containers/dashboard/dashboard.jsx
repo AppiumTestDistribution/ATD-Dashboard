@@ -72,37 +72,51 @@ const columns = [
   }
 ];
 
-const chartOptions = {
-  legend: {
-    display: true,
-    position: "right",
-    labels: {
-      usePointStyle: true
+const getChartOptions = isLabelVisible => {
+  return {
+    legend: {
+      display: isLabelVisible,
+      position: "right",
+      labels: {
+        usePointStyle: true
+      }
+    },
+    plugins: {
+      labels: {
+        render: "percentage",
+        fontColor: "black",
+        precision: 2,
+        fontSize: 13,
+        textShadow: true
+      }
+    },
+    colorschemes: {
+      scheme: "brewer.Accent7"
     }
-  },
-  plugins: {
-    labels: {
-      render: "percentage",
-      fontColor: "black",
-      precision: 2,
-      fontSize: 13,
-      textShadow: true
-    }
-  }
+  };
 };
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.chartData = {
+    this.testStatusChartData = {
       labels: ["Passed", "Failed", "Skipped"],
       datasets: [
         {
-          data: this.props.chartData,
+          data: this.props.testStatusChartData,
           backgroundColor: [
             "rgba(82, 196, 26, 1)",
             "rgba(255, 99, 132, 1)",
             "rgba(255, 194, 0, 1)"
           ]
+        }
+      ]
+    };
+    this.deviceInfoChartData = {
+      labels: this.props.deviceInfoChartData.chartLabels,
+      datasets: [
+        {
+          data: this.props.deviceInfoChartData.chartData
         }
       ]
     };
@@ -126,14 +140,14 @@ class Dashboard extends Component {
               }}
             >
               <Card
-                title="Card title"
+                title="TEST STATUS REPORT"
                 bordered={false}
                 className="dashboard-card-height"
               >
                 <Chart
                   type="doughnut"
-                  data={this.chartData}
-                  options={chartOptions}
+                  data={this.testStatusChartData}
+                  options={getChartOptions(true)}
                   height="400px"
                   width="400px"
                 />
@@ -148,14 +162,14 @@ class Dashboard extends Component {
               }}
             >
               <Card
-                title="Card title"
+                title="DEVICE INFO REPORT"
                 bordered={false}
                 className="dashboard-card-height"
               >
                 <Chart
                   type="doughnut"
-                  data={this.chartData}
-                  options={chartOptions}
+                  data={this.deviceInfoChartData}
+                  options={getChartOptions(false)}
                   height="400px"
                   width="400px"
                 />
@@ -197,7 +211,7 @@ class Dashboard extends Component {
                 padding: "0px 20px 20px 20px"
               }}
             >
-              <Card title="Card title" bordered={false}>
+              <Card title="" bordered={false}>
                 <Table
                   columns={columns}
                   dataSource={this.props.testResult}
@@ -214,7 +228,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   testResult: state[NAME].testResult,
-  chartData: state[NAME].chartData,
+  testStatusChartData: state[NAME].testStatusChartData,
+  deviceInfoChartData: state[NAME].deviceInfoChartData,
   envInfo: state[NAME].envInfo
 });
 

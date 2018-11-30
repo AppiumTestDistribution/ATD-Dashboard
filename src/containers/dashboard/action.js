@@ -3,13 +3,15 @@ import {
   TRANSFORM_TEST_RESULT,
   FETCH_TEST_RESULT,
   NAME,
-  GENERATE_CHART_DATA,
-  FETCH_RUNNER_DETAIL
+  GENERATE_TEST_STATUS_CHART_DATA,
+  FETCH_RUNNER_DETAIL,
+  GENERATE_DEVICE_INFO_CHART_DATA
 } from "./constant";
 import {
   apiResponseAdapter,
-  generateChartData,
-  generateEnvInfo
+  generateTestStatusChartData,
+  generateEnvInfo,
+  generateDeviceInfoChartData
 } from "../../helper";
 
 const handleSuccess = (type, payload) => ({
@@ -31,8 +33,14 @@ export const fetchDashboardData = () => async dispatch => {
 export const fetchChartData = () => async (dispatch, getState) => {
   try {
     const { originalResponse } = getState()[NAME];
-    const chartData = generateChartData(originalResponse);
-    dispatch(handleSuccess(GENERATE_CHART_DATA, chartData));
+    const deviceInfoChartData = generateDeviceInfoChartData(originalResponse);
+    const testStatusChartData = generateTestStatusChartData(originalResponse);
+    dispatch(
+      handleSuccess(GENERATE_TEST_STATUS_CHART_DATA, testStatusChartData)
+    );
+    dispatch(
+      handleSuccess(GENERATE_DEVICE_INFO_CHART_DATA, deviceInfoChartData)
+    );
   } catch (error) {
     console.log(error);
   }

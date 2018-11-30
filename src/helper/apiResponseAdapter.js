@@ -5,10 +5,7 @@ const findElementValue = (response, udid, key) =>
 const countTotalTest = (response, udid) => {
   let count = 0;
   response.forEach(element => {
-    if (
-      element.status === "Completed" &&
-      element.deviceinfo.device.udid === udid
-    ) {
+    if (element.deviceinfo.device.udid === udid) {
       count++;
     }
   });
@@ -19,7 +16,6 @@ const countTestByStatus = (response, udid, status) => {
   let count = 0;
   response.forEach(element => {
     if (
-      element.status === "Completed" &&
       element.deviceinfo.device.udid === udid &&
       element.testresult === status
     ) {

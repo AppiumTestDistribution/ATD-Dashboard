@@ -3,10 +3,7 @@ export const generateTestRunnerDetail = (response, udid) => {
   let className;
   let methods;
   response.forEach(element => {
-    if (
-      element.deviceinfo.device.udid === udid &&
-      element.status === "Completed"
-    ) {
+    if (element.deviceinfo.device.udid === udid) {
       if (className !== element.testClassName) {
         className = element.testClassName;
         methods = [];
