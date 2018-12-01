@@ -4,7 +4,7 @@ import "chartjs-plugin-labels";
 import "chartjs-plugin-colorschemes";
 
 class Chart extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     const { type, data, options } = this.props;
     new ChartJS(this.chartRef, {
       type,

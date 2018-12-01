@@ -97,8 +97,13 @@ const getChartOptions = isLabelVisible => {
 };
 
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
+  async componentDidMount() {
+    await this.props.fetchDashboardData();
+    await this.props.fetchChartData();
+    await this.props.fetchRunnerDetail();
+  }
+
+  componentDidUpdate() {
     this.testStatusChartData = {
       labels: ["Passed", "Failed", "Skipped"],
       datasets: [
@@ -120,12 +125,6 @@ class Dashboard extends Component {
         }
       ]
     };
-  }
-
-  async componentDidMount() {
-    await this.props.fetchDashboardData();
-    await this.props.fetchChartData();
-    await this.props.fetchRunnerDetail();
   }
 
   render() {
