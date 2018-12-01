@@ -13,7 +13,10 @@ const initialState = {
   testResult: [],
   loading: false,
   testStatusChartData: [],
-  deviceInfoChartData: [],
+  deviceInfoChartData: {
+    chartLabels: [],
+    chartData: []
+  },
   envInfo: []
 };
 
