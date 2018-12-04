@@ -1,10 +1,15 @@
 import {
   GENERATE_TEST_RUNNER_DETAIL,
   FETCH_ERROR_SCREENSHOT,
-  GENERATE_DEVICE_INFO
+  GENERATE_DEVICE_INFO,
+  GENERATE_TEST_RESULT_CHART_DATA
 } from "./constant";
 import { NAME } from "../dashboard/constant";
-import { generateTestRunnerDetail, generateDeviceInfo } from "../../helper";
+import {
+  generateTestRunnerDetail,
+  generateDeviceInfo,
+  generateTestResultChartData
+} from "../../helper";
 import { apiClient } from "../../service";
 
 const handleSuccess = (type, payload) => ({
@@ -36,6 +41,16 @@ export const fetchDeviceInfo = udid => async (dispatch, getState) => {
     const { originalResponse } = getState()[NAME];
     const deviceInfo = generateDeviceInfo(originalResponse, udid);
     dispatch(handleSuccess(GENERATE_DEVICE_INFO, deviceInfo));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchChartData = udid => async (dispatch, getState) => {
+  try {
+    const { originalResponse } = getState()[NAME];
+    const chartData = generateTestResultChartData(originalResponse, udid);
+    dispatch(handleSuccess(GENERATE_TEST_RESULT_CHART_DATA, chartData));
   } catch (error) {
     console.log(error);
   }

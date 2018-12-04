@@ -16,7 +16,8 @@ import { NAME } from "./constant";
 import {
   fetchTestRunnerDetail,
   fetchErrorScreenshot,
-  fetchDeviceInfo
+  fetchDeviceInfo,
+  fetchChartData
 } from "./action";
 import Icon from "../../components/icon/icon";
 import "./testDetail.css";
@@ -38,17 +39,20 @@ const showError = errorMessage => {
   });
 };
 
-const countPassedOrFailedTest = methodList => {
+const countTestByStatus = methodList => {
   let passed = 0;
   let failed = 0;
+  let skipped = 0;
   methodList.forEach(methodInfo => {
     if (methodInfo.testResult.toLowerCase() === "pass") {
       passed++;
     } else if (methodInfo.testResult.toLowerCase() === "fail") {
       failed++;
+    } else if (methodInfo.testResult.toLowerCase() === "skip") {
+      skipped++;
     }
   });
-  return { passed, failed };
+  return { passed, failed, skipped };
 };
 
 const headerContent = (className, methodList) => (
@@ -65,12 +69,23 @@ const headerContent = (className, methodList) => (
       <Tooltip title="Passed Test">
         <Badge
           showZero
-          count={countPassedOrFailedTest(methodList).passed}
+          count={countTestByStatus(methodList).passed}
           style={{ backgroundColor: "#228B22", marginRight: "5px" }}
         />
       </Tooltip>
       <Tooltip title="Failed Test">
-        <Badge showZero count={countPassedOrFailedTest(methodList).failed} />
+        <Badge
+          showZero
+          count={countTestByStatus(methodList).failed}
+          style={{ marginRight: "5px" }}
+        />
+      </Tooltip>
+      <Tooltip title="Skipped Test">
+        <Badge
+          showZero
+          count={countTestByStatus(methodList).skipped}
+          style={{ backgroundColor: "#FFC200", marginRight: "5px" }}
+        />
       </Tooltip>
     </div>
   </div>
@@ -79,10 +94,19 @@ const headerContent = (className, methodList) => (
 const chartOptions = {
   legend: {
     display: true,
-    position: "right",
+    position: "right"
+  },
+  plugins: {
     labels: {
-      usePointStyle: true
+      render: "percentage",
+      fontColor: "black",
+      precision: 2,
+      fontSize: 13,
+      textShadow: true
     }
+  },
+  colorschemes: {
+    scheme: "brewer.Accent7"
   }
 };
 
@@ -142,20 +166,36 @@ class TestDetail extends Component {
           )
       }
     ];
-    this.chartData = {
-      labels: ["Passed", "Failed"],
-      datasets: [
-        {
-          data: [12, 34],
-          backgroundColor: ["rgba(82, 196, 26, 1)", "rgba(255, 99, 132, 1)"]
-        }
-      ]
-    };
   }
   async componentDidMount() {
-    const { fetchTestRunnerDetail, fetchDeviceInfo, match } = this.props;
+    const {
+      fetchTestRunnerDetail,
+      fetchDeviceInfo,
+      match,
+      fetchChartData
+    } = this.props;
     await fetchTestRunnerDetail(match.params.id);
     await fetchDeviceInfo(match.params.id);
+    await fetchChartData(match.params.id);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.chartData = {
+        labels: ["Passed", "Failed", "Skipped"],
+        datasets: [
+          {
+            data: this.props.testResultChartData,
+            backgroundColor: [
+              "rgba(82, 196, 26, 1)",
+              "rgba(255, 99, 132, 1)",
+              "rgba(255, 194, 0, 1)"
+            ]
+          }
+        ]
+      };
+      this.forceUpdate();
+    }
   }
 
   async showScreenshot(url) {
@@ -178,7 +218,7 @@ class TestDetail extends Component {
     return (
       <div>
         <Row>
-          <Col span={16}>
+          <Col span={12}>
             <div
               style={{
                 background: "#ECECEC",
@@ -200,7 +240,7 @@ class TestDetail extends Component {
               </Card>
             </div>
           </Col>
-          <Col span={8}>
+          <Col span={12}>
             <div
               style={{
                 background: "#ECECEC",
@@ -268,13 +308,15 @@ class TestDetail extends Component {
 const mapStateToProps = state => ({
   testRunnerDetail: state[NAME].testRunnerDetail,
   errorScreenshot: state[NAME].errorScreenshot,
-  deviceInfo: state[NAME].deviceInfo
+  deviceInfo: state[NAME].deviceInfo,
+  testResultChartData: state[NAME].testResultChartData
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchTestRunnerDetail: udid => dispatch(fetchTestRunnerDetail(udid)),
   fetchErrorScreenshot: url => dispatch(fetchErrorScreenshot(url)),
-  fetchDeviceInfo: udid => dispatch(fetchDeviceInfo(udid))
+  fetchDeviceInfo: udid => dispatch(fetchDeviceInfo(udid)),
+  fetchChartData: udid => dispatch(fetchChartData(udid))
 });
 
 export default connect(
