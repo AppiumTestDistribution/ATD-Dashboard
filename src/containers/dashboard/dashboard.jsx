@@ -51,7 +51,7 @@ const columns = [
     dataIndex: "passed",
     sorter: (a, b) => a.passed - b.passed,
     render: passed => (
-      <Badge count={passed} style={{ backgroundColor: "#228B22" }} showZero />
+      <Badge count={passed} style={{ backgroundColor: "#19BA98" }} showZero />
     )
   },
   {
@@ -60,7 +60,7 @@ const columns = [
     dataIndex: "skipped",
     sorter: (a, b) => a.skipped - b.skipped,
     render: skipped => (
-      <Badge count={skipped} style={{ backgroundColor: "#FFC200" }} showZero />
+      <Badge count={skipped} style={{ backgroundColor: "#FFD90C" }} showZero />
     )
   },
   {
@@ -68,7 +68,9 @@ const columns = [
     key: "failed",
     dataIndex: "failed",
     sorter: (a, b) => a.failed - b.failed,
-    render: failed => <Badge count={failed} showZero />
+    render: failed => (
+      <Badge count={failed} showZero style={{ backgroundColor: "#FA134A" }} />
+    )
   }
 ];
 
@@ -111,11 +113,7 @@ class Dashboard extends Component {
       datasets: [
         {
           data: this.props.testStatusChartData,
-          backgroundColor: [
-            "rgba(82, 196, 26, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 194, 0, 1)"
-          ]
+          backgroundColor: ["#19BA98", "#FA134A", "#FFD90C"]
         }
       ]
     };
