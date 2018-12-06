@@ -94,7 +94,11 @@ const headerContent = (className, methodList) => (
 const chartOptions = {
   legend: {
     display: true,
-    position: "right"
+    position: "right",
+    labels: {
+      fontColor: "white",
+      fontSize: 14
+    }
   },
   plugins: {
     labels: {
@@ -186,11 +190,7 @@ class TestDetail extends Component {
         datasets: [
           {
             data: this.props.testResultChartData,
-            backgroundColor: [
-              "rgba(82, 196, 26, 1)",
-              "rgba(255, 99, 132, 1)",
-              "rgba(255, 194, 0, 1)"
-            ]
+            backgroundColor: ["#19BA98", "#FA134A", "#FFD90C"]
           }
         ]
       };
@@ -228,7 +228,7 @@ class TestDetail extends Component {
               <Card
                 title="TEST RESULTS"
                 bordered={false}
-                className="test-detail-card-height"
+                className="test-detail-card-height u-card--background"
               >
                 <Chart
                   type="doughnut"
@@ -250,7 +250,7 @@ class TestDetail extends Component {
               <Card
                 title="DEVICE"
                 bordered={false}
-                className="test-detail-card-height"
+                className="test-detail-card-height u-card--background"
               >
                 <List
                   size="small"
@@ -275,7 +275,7 @@ class TestDetail extends Component {
                 padding: "0px 20px 20px 20px"
               }}
             >
-              <Card bordered={false}>
+              <Card bordered={false} className="u-card--background">
                 <Collapse>
                   {this.props.testRunnerDetail.map(element => {
                     return (

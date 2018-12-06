@@ -4,3 +4,35 @@
 .ant-list-item-content {
   flex: auto !important;
 }
+
+.ant-col-24 > div {
+  background: #151925 !important;
+}
+
+.ant-col-12 > div {
+  background: #151925 !important;
+}
+
+.u-card--background {
+  background: #2c2f4d !important;
+}
+
+.ant-card-head-title {
+  color: #4a9fef;
+}
+
+.ant-list-item-meta-title {
+  color: #9295b8 !important;
+}
+
+.ant-list-item-content > div {
+  color: white;
+}
+
+.ant-collapse-header {
+  background: #87cefa;
+}
+
+.ant-table-thead th {
+  background: #d3d3d3 !important;
+}

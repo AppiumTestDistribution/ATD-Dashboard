@@ -78,7 +78,9 @@ const getChartOptions = isLabelVisible => {
       display: isLabelVisible,
       position: "right",
       labels: {
-        usePointStyle: true
+        usePointStyle: true,
+        fontColor: "white",
+        fontSize: 13
       }
     },
     plugins: {
@@ -141,7 +143,7 @@ class Dashboard extends Component {
               <Card
                 title="TEST STATUS REPORT"
                 bordered={false}
-                className="dashboard-card-height"
+                className="dashboard-card-height u-card--background"
               >
                 <Chart
                   type="doughnut"
@@ -163,7 +165,7 @@ class Dashboard extends Component {
               <Card
                 title="DEVICE INFO REPORT"
                 bordered={false}
-                className="dashboard-card-height"
+                className="dashboard-card-height u-card--background"
               >
                 <Chart
                   type="doughnut"
@@ -185,7 +187,7 @@ class Dashboard extends Component {
               <Card
                 title="RUNNER INFO"
                 bordered={false}
-                className="dashboard-card-height"
+                className="dashboard-card-height u-card--background"
               >
                 <List
                   size="small"
@@ -210,7 +212,7 @@ class Dashboard extends Component {
                 padding: "0px 20px 20px 20px"
               }}
             >
-              <Card title="" bordered={false}>
+              <Card title="" bordered={false} className="u-card--background">
                 <Table
                   columns={columns}
                   dataSource={this.props.testResult}

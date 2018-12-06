@@ -1,3 +1,15 @@
 .dashboard-card-height {
   height: 320px;
 }
+
+.u-card--background {
+  background: #2c2f4d !important;
+}
+
+.ant-col-8 > div {
+  background: #151925 !important;
+}
+
+.ant-table-tbody tr {
+  background: white;
+}
