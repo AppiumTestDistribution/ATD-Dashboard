@@ -30,9 +30,69 @@
 }
 
 .ant-collapse-header {
-  background: #87cefa;
+  background: #151925;
+  line-height: 8px !important;
 }
 
 .ant-table-thead th {
   background: #d3d3d3 !important;
+}
+
+.ant-collapse-header .arrow {
+  margin: 3px 0px 3px 7px;
+  font-size: 14px !important;
+  color: #4a9fef;
+}
+
+.u-header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.u-header-test-class {
+  padding: 9px;
+  font-size: 18px;
+  color: #4a9fef;
+}
+
+.u-header-sub-container {
+  display: flex;
+  flex-flow: column;
+  margin-right: 10px;
+}
+
+.u-header-count {
+  font-size: 18px;
+  margin: 0px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.u-header-status {
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.u-total--color {
+  color: white;
+}
+.u-passed--color {
+  color: #228b22;
+}
+.u-failed--color {
+  color: #fa134a;
+}
+.u-skipped--color {
+  color: #ffc200;
+}
+
+.u-header-divider {
+  border-right: 2px solid #2c2f4d;
+  padding-right: 10px;
+}
+
+.u-duration--color {
+  color: #9295b8;
 }

@@ -6,7 +6,6 @@ import {
   Table,
   Row,
   Col,
-  Badge,
   Button,
   Modal,
   Tooltip,
@@ -55,38 +54,42 @@ const countTestByStatus = methodList => {
   return { passed, failed, skipped };
 };
 
+const findTotalDuration = methodList => {
+  return "00:01:12";
+};
+
 const headerContent = (className, methodList) => (
-  <div style={{ display: "flex", justifyContent: "space-between" }}>
-    <div>{className}</div>
-    <div style={{ marginRight: "20px" }}>
-      <Tooltip title="Total Test">
-        <Badge
-          showZero
-          count={methodList.length}
-          style={{ backgroundColor: "#8470ff", marginRight: "5px" }}
-        />
-      </Tooltip>
-      <Tooltip title="Passed Test">
-        <Badge
-          showZero
-          count={countTestByStatus(methodList).passed}
-          style={{ backgroundColor: "#228B22", marginRight: "5px" }}
-        />
-      </Tooltip>
-      <Tooltip title="Failed Test">
-        <Badge
-          showZero
-          count={countTestByStatus(methodList).failed}
-          style={{ marginRight: "5px" }}
-        />
-      </Tooltip>
-      <Tooltip title="Skipped Test">
-        <Badge
-          showZero
-          count={countTestByStatus(methodList).skipped}
-          style={{ backgroundColor: "#FFC200", marginRight: "5px" }}
-        />
-      </Tooltip>
+  <div className="u-header-container">
+    <div className="u-header-test-class">{className}</div>
+    <div style={{ marginRight: "8px", display: "flex" }}>
+      <div className="u-header-sub-container u-header-divider">
+        <p className="u-header-count u-duration--color">
+          {findTotalDuration(methodList)}
+        </p>
+        <p className="u-header-status u-duration--color">Duration</p>
+      </div>
+      <div className="u-header-sub-container u-header-divider">
+        <p className="u-header-count u-total--color">{methodList.length}</p>
+        <p className="u-header-status u-total--color">Tests</p>
+      </div>
+      <div className="u-header-sub-container u-header-divider">
+        <p className="u-header-count u-passed--color">
+          {countTestByStatus(methodList).passed}
+        </p>
+        <p className="u-header-status u-passed--color">Passed</p>
+      </div>
+      <div className="u-header-sub-container u-header-divider">
+        <p className="u-header-count u-failed--color">
+          {countTestByStatus(methodList).failed}
+        </p>
+        <p className="u-header-status u-failed--color">Failed</p>
+      </div>
+      <div className="u-header-sub-container">
+        <p className="u-header-count u-skipped--color">
+          {countTestByStatus(methodList).skipped}
+        </p>
+        <p className="u-header-status u-skipped--color">Skipped</p>
+      </div>
     </div>
   </div>
 );
