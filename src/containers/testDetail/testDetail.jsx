@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Collapse, Table, Row, Col, Button, Modal, Tooltip, List } from "antd";
+import ReactPlayer from "react-player";
 import { NAME } from "./constant";
 import {
   fetchTestRunnerDetail,
@@ -137,13 +138,13 @@ class TestDetail extends Component {
         title: "Start Time",
         dataIndex: "startTime",
         key: "startTime",
-        width: "20%"
+        width: "15%"
       },
       {
         title: "End Time",
         key: "endTime",
         dataIndex: "endTime",
-        width: "20%"
+        width: "15%"
       },
       {
         title: "Logs",
@@ -152,7 +153,7 @@ class TestDetail extends Component {
         width: "20%",
         render: (errorMessage, row) =>
           row.testResult === "Fail" && (
-            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               <Button type="primary" onClick={() => showError(errorMessage)}>
                 Error
               </Button>
@@ -161,6 +162,12 @@ class TestDetail extends Component {
                 onClick={() => this.showScreenshot(row.errorScreenshotUrl)}
               >
                 Screenshot
+              </Button>
+              <Button
+                type="primary"
+                onClick={() => this.showVideo(row.errorScreenshotUrl)}
+              >
+                Video
               </Button>
             </div>
           )
@@ -207,6 +214,19 @@ class TestDetail extends Component {
         />
       ),
       width: "50%"
+    });
+  }
+
+  async showVideo(url) {
+    Modal.error({
+      title: "Video",
+      content: (
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+          playing
+        />
+      ),
+      width: "55%"
     });
   }
 
