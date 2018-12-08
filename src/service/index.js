@@ -15,10 +15,7 @@ export const apiClient = {
   },
   fetchScreenshot: async url => {
     try {
-      const response = await axios.get(
-        "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
-        { responseType: "arraybuffer" }
-      );
+      const response = await axios.get(url, { responseType: "arraybuffer" });
       const base64 = btoa(
         new Uint8Array(response.data).reduce(
           (data, byte) => data + String.fromCharCode(byte),
