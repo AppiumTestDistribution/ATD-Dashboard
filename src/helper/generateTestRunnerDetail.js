@@ -25,7 +25,10 @@ export const generateTestRunnerDetail = (response, udid) => {
           : null,
         errorScreenshotUrl: element.hasOwnProperty("screenShotFailure")
           ? element.screenShotFailure
-          : null
+          : null,
+        providerValue: element.hasOwnProperty("dataProviderValue")
+          ? element.dataProviderValue
+          : []
       });
     }
   });

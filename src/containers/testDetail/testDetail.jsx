@@ -116,7 +116,21 @@ class TestDetail extends Component {
         title: "Method Name",
         dataIndex: "methodName",
         key: "methodName",
-        width: "30%"
+        width: "20%"
+      },
+      {
+        title: "Provider Value",
+        dataIndex: "providerValue",
+        key: "providerValue",
+        width: "20%",
+        render: providerValue => (
+          <Button
+            type="primary"
+            onClick={() => this.showProviderValue(providerValue)}
+          >
+            Data
+          </Button>
+        )
       },
       {
         title: "Status",
@@ -138,13 +152,13 @@ class TestDetail extends Component {
         title: "Start Time",
         dataIndex: "startTime",
         key: "startTime",
-        width: "15%"
+        width: "10%"
       },
       {
         title: "End Time",
         key: "endTime",
         dataIndex: "endTime",
-        width: "15%"
+        width: "10%"
       },
       {
         title: "Logs",
@@ -224,6 +238,20 @@ class TestDetail extends Component {
         <ReactPlayer
           url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
           playing
+        />
+      ),
+      width: "55%"
+    });
+  }
+
+  async showProviderValue(providerValue) {
+    Modal.info({
+      title: "Provider Value",
+      content: (
+        <List
+          bordered
+          dataSource={providerValue}
+          renderItem={item => <List.Item>{item}</List.Item>}
         />
       ),
       width: "55%"

@@ -1,12 +1,13 @@
 [
   {
-    "_id": "5bff21e57032199105717c01",
+    "_id": "5c0bb2d6bab221513af8f73e",
     "testresult": "Pass",
     "testClassName": "SliderTest",
-    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5554__passTest.txt",
-    "testMethodName": "passTest",
-    "startTime": "11:16:26 PM",
-    "endTime": "11:16:53 PM",
+    "dataProviderValue": ["saikrishna", "password"],
+    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5554__dataProviderTest.txt",
+    "testMethodName": "dataProviderTest",
+    "startTime": "12:02:15 PM",
+    "endTime": "12:02:30 PM",
     "screenPath": {},
     "deviceinfo": {
       "available": false,
@@ -28,85 +29,20 @@
         "brand": "google",
         "apiLevel": "26"
       },
-      "port": 52925
+      "port": 56660
     },
     "status": "Completed"
   },
   {
-    "_id": "5bff21f77032199105717c02",
+    "_id": "5c0bb2e6bab221513af8f73f",
     "testresult": "Pass",
-    "testClassName": "DragnDropTest",
-    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5556__dragNDrop.txt",
-    "testMethodName": "dragNDrop",
-    "startTime": "11:16:26 PM",
-    "endTime": "11:17:10 PM",
-    "screenPath": {},
-    "deviceinfo": {
-      "available": false,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "Not Supported",
-        "os": "android",
-        "available": false,
-        "screenSize": " 1440x2560",
-        "osVersion": "9",
-        "name": "google Android SDK built for x86_64\n",
-        "isDevice": true,
-        "deviceModel": "Android SDK built for x86_64\n",
-        "state": "Not Supported",
-        "udid": "emulator-5556",
-        "deviceManufacturer": "Google\n",
-        "brand": "google",
-        "apiLevel": "28"
-      },
-      "port": 52926
-    },
-    "status": "Completed"
-  },
-  {
-    "_id": "5bff22017032199105717c03",
-    "testresult": "Skip",
     "testClassName": "SliderTest",
-    "testMethodName": "skipTest",
-    "startTime": "11:16:26 PM",
-    "endTime": "11:17:11 PM",
+    "dataProviderValue": ["srini", "password"],
+    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5554__dataProviderTest.txt",
+    "testMethodName": "dataProviderTest",
+    "startTime": "12:02:31 PM",
+    "endTime": "12:02:45 PM",
     "screenPath": {},
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "iOS 11.4",
-        "osVersion": "11.4",
-        "os": "iOS",
-        "name": "iPhone 6",
-        "isDevice": false,
-        "available": true,
-        "deviceModel": "iPhone7,2",
-        "state": "Booted",
-        "udid": "A4DCE564-192F-4941-9C9D-1DA55A781E0B",
-        "deviceManufacturer": "apple",
-        "brand": "Not Supported",
-        "apiLevel": "Not Supported"
-      },
-      "port": 52927
-    },
-    "status": "Completed"
-  },
-  {
-    "_id": "5bff22107032199105717c04",
-    "testresult": "Fail",
-    "testClassName": "SliderTest",
-    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5554__customDescriptionAndMaxRetriesTest.txt",
-    "testException": "expected [true] but found [false]",
-    "testMethodName": "customDescriptionAndMaxRetriesTest",
-    "startTime": "11:17:23 PM",
-    "endTime": "11:17:36 PM",
-    "screenPath": {},
-    "screenShotFailure": "http://192.168.254.21:4567/screenshot/android/emulator-5554/SliderTest/customDescriptionAndMaxRetriesTest/28_Nov__2018_11_17_36_PM-customDescriptionAndMaxRetriesTest_failed.jpeg",
     "deviceinfo": {
       "available": false,
       "hostName": "127.0.0.1",
@@ -127,7 +63,7 @@
         "brand": "google",
         "apiLevel": "26"
       },
-      "port": 52925
+      "port": 56660
     },
     "status": "Completed"
   }
