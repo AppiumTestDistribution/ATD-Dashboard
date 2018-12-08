@@ -5,11 +5,7 @@
   flex: auto !important;
 }
 
-.ant-col-24 > div {
-  background: #151925 !important;
-}
-
-.ant-col-12 > div {
+.u-grid--color > div {
   background: #151925 !important;
 }
 
@@ -30,12 +26,32 @@
 }
 
 .ant-collapse-header {
-  background: #151925;
+  background: #2c2f4d;
   line-height: 8px !important;
 }
 
+.ant-collapse-content-box {
+  background: #2c2f4d;
+}
+
 .ant-table-thead th {
-  background: #d3d3d3 !important;
+  background: #2c2f4d !important;
+}
+
+.ant-table-thead th {
+  border-bottom: 1px solid #151925 !important;
+}
+
+.ant-table-thead th div {
+  color: #4a9fef;
+  font-weight: 800;
+}
+
+.ant-table-tbody td {
+  background: #2c2f4d !important;
+  color: white;
+  font-weight: 600;
+  border-bottom: 1px solid #151925 !important;
 }
 
 .ant-collapse-header .arrow {
@@ -52,7 +68,8 @@
 .u-header-test-class {
   padding: 9px;
   font-size: 18px;
-  color: #4a9fef;
+  color: white;
+  font-weight: 600;
 }
 
 .u-header-sub-container {
@@ -90,9 +107,19 @@
 
 .u-header-divider {
   border-right: 2px solid #2c2f4d;
-  padding-right: 10px;
+  padding-right: 15px;
 }
 
 .u-duration--color {
   color: #9295b8;
+}
+
+.u-chart-container {
+  background: #ececec;
+  padding: 20px;
+}
+
+.u-chart-container h2 {
+  color: #4a9fef;
+  margin-bottom: 2.5rem;
 }

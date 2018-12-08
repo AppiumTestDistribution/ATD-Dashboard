@@ -16,8 +16,11 @@ class Chart extends Component {
   render() {
     const { width, height } = this.props;
     return (
-      <div style={{ width, height }}>
-        <canvas ref={node => (this.chartRef = node)} />
+      <div>
+        <canvas
+          ref={node => (this.chartRef = node)}
+          style={{ width, height }}
+        />
       </div>
     );
   }

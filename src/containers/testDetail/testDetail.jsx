@@ -1,16 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  Collapse,
-  Card,
-  Table,
-  Row,
-  Col,
-  Button,
-  Modal,
-  Tooltip,
-  List
-} from "antd";
+import { Collapse, Table, Row, Col, Button, Modal, Tooltip, List } from "antd";
 import { NAME } from "./constant";
 import {
   fetchTestRunnerDetail,
@@ -108,7 +98,7 @@ const chartOptions = {
       render: "percentage",
       fontColor: "black",
       precision: 2,
-      fontSize: 13,
+      fontSize: 15,
       textShadow: true
     }
   },
@@ -163,8 +153,11 @@ class TestDetail extends Component {
         render: (errorMessage, row) =>
           row.testResult === "Fail" && (
             <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-              <Button onClick={() => showError(errorMessage)}>Error</Button>
+              <Button type="primary" onClick={() => showError(errorMessage)}>
+                Error
+              </Button>
               <Button
+                type="primary"
                 onClick={() => this.showScreenshot(row.errorScreenshotUrl)}
               >
                 Screenshot
@@ -221,85 +214,59 @@ class TestDetail extends Component {
     return (
       <div>
         <Row>
-          <Col span={12}>
-            <div
-              style={{
-                background: "#ECECEC",
-                padding: "20px"
-              }}
-            >
-              <Card
-                title="TEST RESULTS"
-                bordered={false}
-                className="test-detail-card-height u-card--background"
-              >
-                <Chart
-                  type="doughnut"
-                  data={this.chartData}
-                  options={chartOptions}
-                  height="400px"
-                  width="400px"
-                />
-              </Card>
+          <Col span={10} className="u-grid--color">
+            <div className="u-chart-container">
+              <h2>TEST RESULTS</h2>
+              <Chart
+                type="doughnut"
+                data={this.chartData}
+                options={chartOptions}
+                height="40px"
+                width="100px"
+              />
             </div>
           </Col>
-          <Col span={12}>
-            <div
-              style={{
-                background: "#ECECEC",
-                padding: "20px"
-              }}
-            >
-              <Card
-                title="DEVICE"
-                bordered={false}
-                className="test-detail-card-height u-card--background"
-              >
-                <List
-                  size="small"
-                  itemLayout="horizontal"
-                  dataSource={this.props.deviceInfo}
-                  renderItem={item => (
-                    <List.Item>
-                      <List.Item.Meta title={item.title} />
-                      <div>{item.value}</div>
-                    </List.Item>
-                  )}
-                />
-              </Card>
+          <Col span={4} />
+          <Col span={10} className="u-grid--color">
+            <div className="u-chart-container">
+              <h2>DEVICE</h2>
+              <List
+                itemLayout="horizontal"
+                dataSource={this.props.deviceInfo}
+                renderItem={item => (
+                  <List.Item>
+                    <List.Item.Meta title={item.title} />
+                    <div>{item.value}</div>
+                  </List.Item>
+                )}
+              />
             </div>
           </Col>
         </Row>
         <Row>
-          <Col span={24}>
+          <Col span={24} className="u-grid--color">
             <div
               style={{
                 background: "#ECECEC",
                 padding: "0px 20px 20px 20px"
               }}
             >
-              <Card bordered={false} className="u-card--background">
-                <Collapse>
-                  {this.props.testRunnerDetail.map(element => {
-                    return (
-                      <Panel
-                        header={headerContent(
-                          element.className,
-                          element.methods
-                        )}
-                        key={element.key}
-                      >
-                        <Table
-                          columns={this.columns}
-                          dataSource={element.methods}
-                          bordered
-                          pagination={false}
-                        />
-                      </Panel>
-                    );
-                  })}
-                </Collapse>
-              </Card>
+              <Collapse>
+                {this.props.testRunnerDetail.map(element => {
+                  return (
+                    <Panel
+                      header={headerContent(element.className, element.methods)}
+                      key={element.key}
+                    >
+                      <Table
+                        columns={this.columns}
+                        dataSource={element.methods}
+                        pagination={false}
+                      />
+                    </Panel>
+                  );
+                })}
+              </Collapse>
             </div>
           </Col>
         </Row>

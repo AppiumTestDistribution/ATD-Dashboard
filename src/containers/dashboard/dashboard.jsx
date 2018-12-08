@@ -42,7 +42,14 @@ const columns = [
     dataIndex: "total",
     sorter: (a, b) => a.total - b.total,
     render: total => (
-      <Badge count={total} style={{ backgroundColor: "#8470ff" }} />
+      <Badge
+        count={total}
+        style={{
+          backgroundColor: "#8470ff",
+          color: "black",
+          fontWeight: "700"
+        }}
+      />
     )
   },
   {
@@ -51,7 +58,15 @@ const columns = [
     dataIndex: "passed",
     sorter: (a, b) => a.passed - b.passed,
     render: passed => (
-      <Badge count={passed} style={{ backgroundColor: "#19BA98" }} showZero />
+      <Badge
+        count={passed}
+        style={{
+          backgroundColor: "#19BA98",
+          color: "black",
+          fontWeight: "700"
+        }}
+        showZero
+      />
     )
   },
   {
@@ -60,7 +75,15 @@ const columns = [
     dataIndex: "skipped",
     sorter: (a, b) => a.skipped - b.skipped,
     render: skipped => (
-      <Badge count={skipped} style={{ backgroundColor: "#FFD90C" }} showZero />
+      <Badge
+        count={skipped}
+        style={{
+          backgroundColor: "#FFD90C",
+          color: "black",
+          fontWeight: "700"
+        }}
+        showZero
+      />
     )
   },
   {
@@ -69,7 +92,15 @@ const columns = [
     dataIndex: "failed",
     sorter: (a, b) => a.failed - b.failed,
     render: failed => (
-      <Badge count={failed} showZero style={{ backgroundColor: "#FA134A" }} />
+      <Badge
+        count={failed}
+        showZero
+        style={{
+          backgroundColor: "#FA134A",
+          color: "black",
+          fontWeight: "700"
+        }}
+      />
     )
   }
 ];
@@ -131,79 +162,49 @@ class Dashboard extends Component {
     return (
       <div>
         <Row>
-          <Col span={8}>
-            <div
-              style={{
-                background: "#ECECEC",
-                padding: "20px"
-              }}
-            >
-              <Card
-                title="TEST STATUS REPORT"
-                bordered={false}
-                className="dashboard-card-height u-card--background"
-              >
-                <Chart
-                  type="doughnut"
-                  data={this.testStatusChartData}
-                  options={getChartOptions(true)}
-                  height="400px"
-                  width="400px"
-                />
-              </Card>
+          <Col span={8} className="u-main-grid--color">
+            <div className="u-main-chart-container">
+              <h2>TEST STATUS REPORT</h2>
+              <Chart
+                type="doughnut"
+                data={this.testStatusChartData}
+                options={getChartOptions(true)}
+                height="50px"
+                width="100px"
+              />
             </div>
           </Col>
-          <Col span={8}>
-            <div
-              style={{
-                background: "#ECECEC",
-                padding: "20px"
-              }}
-            >
-              <Card
-                title="DEVICE INFO REPORT"
-                bordered={false}
-                className="dashboard-card-height u-card--background"
-              >
-                <Chart
-                  type="doughnut"
-                  data={this.deviceInfoChartData}
-                  options={getChartOptions(false)}
-                  height="400px"
-                  width="400px"
-                />
-              </Card>
+          <Col span={8} className="u-main-grid--color">
+            <div className="u-main-chart-container">
+              <h2>DEVICE INFO REPORT</h2>
+              <Chart
+                type="doughnut"
+                data={this.deviceInfoChartData}
+                options={getChartOptions(false)}
+                height="50px"
+                width="100px"
+              />
             </div>
           </Col>
-          <Col span={8}>
-            <div
-              style={{
-                background: "#ECECEC",
-                padding: "20px"
-              }}
-            >
-              <Card
-                title="RUNNER INFO"
-                bordered={false}
-                className="dashboard-card-height u-card--background"
-              >
-                <List
-                  size="small"
-                  itemLayout="horizontal"
-                  dataSource={this.props.envInfo}
-                  renderItem={item => (
-                    <List.Item>
-                      <List.Item.Meta title={item.title} />
-                      <div>{item.value}</div>
-                    </List.Item>
-                  )}
-                />
-              </Card>
+          <Col span={8} className="u-main-grid--color">
+            <div className="u-main-chart-container">
+              <h2>RUNNER INFO</h2>
+              <List
+                size="small"
+                itemLayout="horizontal"
+                dataSource={this.props.envInfo}
+                renderItem={item => (
+                  <List.Item>
+                    <List.Item.Meta title={item.title} />
+                    <div>{item.value}</div>
+                  </List.Item>
+                )}
+              />
             </div>
           </Col>
         </Row>
         <Row>
-          <Col span={24}>
+          <Col span={24} className="u-main-grid--color">
             <div
               style={{
                 background: "#ECECEC",
@@ -211,11 +212,7 @@ class Dashboard extends Component {
               }}
             >
               <Card title="" bordered={false} className="u-card--background">
-                <Table
-                  columns={columns}
-                  dataSource={this.props.testResult}
-                  bordered
-                />
+                <Table columns={columns} dataSource={this.props.testResult} />
               </Card>
             </div>
           </Col>

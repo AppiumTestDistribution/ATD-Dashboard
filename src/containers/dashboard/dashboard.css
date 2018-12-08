@@ -13,3 +13,26 @@
 .ant-table-tbody tr {
   background: white;
 }
+
+.u-main-chart-container {
+  background: #ececec;
+  padding: 20px;
+}
+
+.u-main-chart-container h2 {
+  color: #4a9fef;
+  margin-bottom: 2.5rem;
+}
+
+.u-main-grid--color > div {
+  background: #151925 !important;
+}
+
+.ant-pagination-item-link {
+  background: #2c2f4d !important;
+  color: white !important;
+}
+
+.ant-pagination-item {
+  background: #2c2f4d !important;
+}

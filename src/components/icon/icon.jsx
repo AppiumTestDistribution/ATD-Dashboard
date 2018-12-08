@@ -10,20 +10,19 @@ const iconType = {
 };
 
 const iconStyle = {
-  ios: { theme: "filled", twoToneColor: "" },
-  android: { theme: "filled", twoToneColor: "" },
-  fail: { theme: "twoTone", twoToneColor: "#ff0000" },
-  pass: { theme: "twoTone", twoToneColor: "#52c41a" },
-  skip: { theme: "twoTone", twoToneColor: "#FFC200" }
+  ios: { theme: "filled", color: "" },
+  android: { theme: "filled", color: "" },
+  fail: { theme: "filled", color: "#FA134A" },
+  pass: { theme: "filled", color: "#19BA98" },
+  skip: { theme: "filled", color: "#FFD90C" }
 };
 
 const Icon = ({ type, size }) => {
   return (
     <AntIcon
       type={iconType[type.toLowerCase()]}
-      style={{ fontSize: size }}
+      style={{ fontSize: size, color: iconStyle[type.toLowerCase()].color }}
       theme={iconStyle[type.toLowerCase()].theme}
-      twoToneColor={iconStyle[type.toLowerCase()].twoToneColor}
     />
   );
 };
