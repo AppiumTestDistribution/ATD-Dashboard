@@ -270,7 +270,8 @@ class TestDetail extends Component {
         datasets: [
           {
             data: this.props.testResultChartData,
-            backgroundColor: ["#19BA98", "#FA134A", "#FFD90C"]
+            backgroundColor: ["#19BA98", "#FA134A", "#FFD90C"],
+            borderWidth: 0
           }
         ]
       };

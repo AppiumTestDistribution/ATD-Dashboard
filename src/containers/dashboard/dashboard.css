@@ -46,3 +46,7 @@
   color: white;
   font-weight: bold;
 }
+
+.ant-badge-count {
+  box-shadow: 0 0 0 0px #fff !important;
+}

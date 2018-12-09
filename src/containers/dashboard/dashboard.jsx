@@ -144,7 +144,8 @@ class Dashboard extends Component {
       datasets: [
         {
           data: this.props.testStatusChartData,
-          backgroundColor: ["#19BA98", "#FA134A", "#FFD90C"]
+          backgroundColor: ["#19BA98", "#FA134A", "#FFD90C"],
+          borderWidth: 0
         }
       ]
     };
@@ -152,7 +153,8 @@ class Dashboard extends Component {
       labels: this.props.deviceInfoChartData.chartLabels,
       datasets: [
         {
-          data: this.props.deviceInfoChartData.chartData
+          data: this.props.deviceInfoChartData.chartData,
+          borderWidth: 0
         }
       ]
     };
