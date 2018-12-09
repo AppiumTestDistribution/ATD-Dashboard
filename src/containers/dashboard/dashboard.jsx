@@ -190,6 +190,7 @@ class Dashboard extends Component {
             <div className="u-main-chart-container">
               <h2>RUNNER INFO</h2>
               <List
+                className="u-main-list"
                 size="small"
                 itemLayout="horizontal"
                 dataSource={this.props.envInfo}

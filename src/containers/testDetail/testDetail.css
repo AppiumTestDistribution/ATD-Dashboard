@@ -1,6 +1,14 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 .test-detail-card-height {
   height: 360px;
 }
+
+.u-device-list .ant-list-item {
+  border-bottom: 1px solid #2c2f4d !important;
+}
+
 .ant-list-item-content {
   flex: auto !important;
 }
@@ -21,8 +29,9 @@
   color: #9295b8 !important;
 }
 
-.ant-list-item-content > div {
+.u-device-list .ant-list-item-content > div {
   color: white;
+  font-weight: bold;
 }
 
 .ant-collapse-header {
@@ -122,4 +131,39 @@
 .u-chart-container h2 {
   color: #4a9fef;
   margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  /* height: 160px;
+  line-height: 160px; */
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+}
+
+.ant-collapse {
+  border: 0px !important;
+  background: #151925 !important;
+}
+
+.ant-collapse > .ant-collapse-item {
+  border-bottom: 0px !important;
+}
+
+.ant-collapse-item {
+  margin-bottom: 10px;
+}
+
+.ant-collapse-content {
+  border-top: 1px solid #4a9fef !important;
 }

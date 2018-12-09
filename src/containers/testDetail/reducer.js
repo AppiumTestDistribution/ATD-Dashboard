@@ -4,7 +4,8 @@ import {
   GENERATE_TEST_RUNNER_DETAIL,
   FETCH_ERROR_SCREENSHOT,
   GENERATE_DEVICE_INFO,
-  GENERATE_TEST_RESULT_CHART_DATA
+  GENERATE_TEST_RESULT_CHART_DATA,
+  FETCH_CAPTURED_SCREENSHOTS
 } from "./constant";
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
   loading: false,
   errorScreenshot: "",
   deviceInfo: [],
-  testResultChartData: []
+  testResultChartData: [],
+  capturedScreenshots: []
 };
 
 export default handleActions(
@@ -47,6 +49,15 @@ export default handleActions(
     [GENERATE_TEST_RESULT_CHART_DATA]: (state, { payload }) =>
       update(state, {
         testResultChartData: {
+          $set: payload
+        },
+        loading: {
+          $set: false
+        }
+      }),
+    [FETCH_CAPTURED_SCREENSHOTS]: (state, { payload }) =>
+      update(state, {
+        capturedScreenshots: {
           $set: payload
         },
         loading: {

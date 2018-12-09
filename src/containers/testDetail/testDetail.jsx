@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Collapse, Table, Row, Col, Button, Modal, Tooltip, List } from "antd";
+import Slider from "react-slick";
+import _ from "lodash";
 import ReactPlayer from "react-player";
 import { NAME } from "./constant";
 import {
   fetchTestRunnerDetail,
   fetchErrorScreenshot,
   fetchDeviceInfo,
-  fetchChartData
+  fetchChartData,
+  fetchAllCapturedScreenshots
 } from "./action";
 import Icon from "../../components/icon/icon";
 import "./testDetail.css";
@@ -19,14 +22,6 @@ const statusIconDesc = {
   fail: "Failed",
   pass: "Passed",
   skip: "Skipped"
-};
-
-const showError = errorMessage => {
-  Modal.error({
-    title: "Error Detail",
-    content: errorMessage,
-    width: "50%"
-  });
 };
 
 const countTestByStatus = methodList => {
@@ -108,6 +103,16 @@ const chartOptions = {
   }
 };
 
+const settings = {
+  dots: true,
+  dotsClass: "slick-dots slick-thumb",
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true
+};
+
 class TestDetail extends Component {
   constructor(props) {
     super(props);
@@ -116,21 +121,7 @@ class TestDetail extends Component {
         title: "Method Name",
         dataIndex: "methodName",
         key: "methodName",
-        width: "20%"
-      },
-      {
-        title: "Provider Value",
-        dataIndex: "providerValue",
-        key: "providerValue",
-        width: "20%",
-        render: providerValue => (
-          <Button
-            type="primary"
-            onClick={() => this.showProviderValue(providerValue)}
-          >
-            Data
-          </Button>
-        )
+        width: "25%"
       },
       {
         title: "Status",
@@ -165,29 +156,101 @@ class TestDetail extends Component {
         dataIndex: "errorMessage",
         key: "errorMessage",
         width: "20%",
-        render: (errorMessage, row) =>
-          row.testResult === "Fail" && (
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Button type="primary" onClick={() => showError(errorMessage)}>
-                Error
-              </Button>
-              <Button
-                type="primary"
-                onClick={() => this.showScreenshot(row.errorScreenshotUrl)}
-              >
-                Screenshot
-              </Button>
-              <Button
-                type="primary"
-                onClick={() => this.showVideo(row.errorScreenshotUrl)}
-              >
-                Video
-              </Button>
-            </div>
-          )
+        render: (errorMessage, row) => this.findLogsInfo(errorMessage, row)
       }
     ];
   }
+
+  generateLogsButton(name, functionName, value) {
+    return (
+      <Button type="primary" onClick={() => this[functionName](value)}>
+        {name}
+      </Button>
+    );
+  }
+
+  showError(errorMessage) {
+    Modal.error({
+      title: "Error Detail",
+      content: errorMessage,
+      width: "50%"
+    });
+  }
+
+  async showCapturedScreenshots(screenshots) {
+    await this.props.fetchAllCapturedScreenshots(screenshots);
+    Modal.info({
+      title: "Captured Screenshots",
+      content: (
+        <div>
+          <Slider {...settings}>
+            {this.props.capturedScreenshots.map(record => (
+              <div key={record.key}>
+                <h2 style={{ textAlign: "center" }}>{record.key}</h2>
+                <img
+                  style={{ margin: "auto" }}
+                  src={record.screenshot}
+                  alt=""
+                  height="80%"
+                  width="80%"
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      ),
+      width: "55%"
+    });
+  }
+
+  findLogsInfo(errorMessage, row) {
+    let result;
+    if (row.testResult === "Pass") {
+      result = (
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          {row.providerValue.length !== 0 &&
+            this.generateLogsButton(
+              "Data",
+              "showProviderValue",
+              row.providerValue
+            )}
+          {!_.isEmpty(row.capturedScreenshots) &&
+            this.generateLogsButton(
+              "Captured Screenshots",
+              "showCapturedScreenshots",
+              row.capturedScreenshots
+            )}
+        </div>
+      );
+    } else if (row.testResult === "Fail") {
+      result = (
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          {this.generateLogsButton("Error", "showError", errorMessage)}
+          {this.generateLogsButton(
+            "Error Screenshot",
+            "showScreenshot",
+            row.errorScreenshotUrl
+          )}
+          {row.videoUrl &&
+            this.generateLogsButton("Video", "showVideo", row.videoUrl)}
+          {row.providerValue.length !== 0 &&
+            this.generateLogsButton(
+              "Data",
+              this.showProviderValue,
+              row.providerValue
+            )}
+          {!_.isEmpty(row.capturedScreenshots) &&
+            this.generateLogsButton(
+              "Captured Screenshots",
+              "showCapturedScreenshots",
+              row.capturedScreenshots
+            )}
+        </div>
+      );
+    }
+    return result;
+  }
+
   async componentDidMount() {
     const {
       fetchTestRunnerDetail,
@@ -244,7 +307,7 @@ class TestDetail extends Component {
     });
   }
 
-  async showProviderValue(providerValue) {
+  showProviderValue(providerValue) {
     Modal.info({
       title: "Provider Value",
       content: (
@@ -279,6 +342,7 @@ class TestDetail extends Component {
             <div className="u-chart-container">
               <h2>DEVICE</h2>
               <List
+                className="u-device-list"
                 itemLayout="horizontal"
                 dataSource={this.props.deviceInfo}
                 renderItem={item => (
@@ -327,14 +391,17 @@ const mapStateToProps = state => ({
   testRunnerDetail: state[NAME].testRunnerDetail,
   errorScreenshot: state[NAME].errorScreenshot,
   deviceInfo: state[NAME].deviceInfo,
-  testResultChartData: state[NAME].testResultChartData
+  testResultChartData: state[NAME].testResultChartData,
+  capturedScreenshots: state[NAME].capturedScreenshots
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchTestRunnerDetail: udid => dispatch(fetchTestRunnerDetail(udid)),
   fetchErrorScreenshot: url => dispatch(fetchErrorScreenshot(url)),
   fetchDeviceInfo: udid => dispatch(fetchDeviceInfo(udid)),
-  fetchChartData: udid => dispatch(fetchChartData(udid))
+  fetchChartData: udid => dispatch(fetchChartData(udid)),
+  fetchAllCapturedScreenshots: screenshots =>
+    dispatch(fetchAllCapturedScreenshots(screenshots))
 });
 
 export default connect(

@@ -2,7 +2,8 @@ import {
   GENERATE_TEST_RUNNER_DETAIL,
   FETCH_ERROR_SCREENSHOT,
   GENERATE_DEVICE_INFO,
-  GENERATE_TEST_RESULT_CHART_DATA
+  GENERATE_TEST_RESULT_CHART_DATA,
+  FETCH_CAPTURED_SCREENSHOTS
 } from "./constant";
 import { NAME } from "../dashboard/constant";
 import {
@@ -51,6 +52,23 @@ export const fetchChartData = udid => async (dispatch, getState) => {
     const { originalResponse } = getState()[NAME];
     const chartData = generateTestResultChartData(originalResponse, udid);
     dispatch(handleSuccess(GENERATE_TEST_RESULT_CHART_DATA, chartData));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchAllCapturedScreenshots = screenshots => async dispatch => {
+  const capturedScreenshots = [];
+  try {
+    const screenshotsUrl = Object.values(screenshots)[0];
+    for (var urlKey in screenshotsUrl) {
+      const key = urlKey;
+      const screenshot = await apiClient.fetchScreenshot(
+        screenshotsUrl[urlKey]
+      );
+      capturedScreenshots.push({ key, screenshot });
+    }
+    dispatch(handleSuccess(FETCH_CAPTURED_SCREENSHOTS, capturedScreenshots));
   } catch (error) {
     console.log(error);
   }

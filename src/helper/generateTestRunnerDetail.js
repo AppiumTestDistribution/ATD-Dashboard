@@ -28,7 +28,13 @@ export const generateTestRunnerDetail = (response, udid) => {
           : null,
         providerValue: element.hasOwnProperty("dataProviderValue")
           ? element.dataProviderValue
-          : []
+          : [],
+        videoUrl: element.hasOwnProperty("videoLogs")
+          ? element.videoLogs
+          : null,
+        capturedScreenshots: element.hasOwnProperty("screenPath")
+          ? element.screenPath
+          : null
       });
     }
   });

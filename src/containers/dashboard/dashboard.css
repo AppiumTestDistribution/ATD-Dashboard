@@ -22,6 +22,7 @@
 .u-main-chart-container h2 {
   color: #4a9fef;
   margin-bottom: 2.5rem;
+  font-weight: 700;
 }
 
 .u-main-grid--color > div {
@@ -35,4 +36,13 @@
 
 .ant-pagination-item {
   background: #2c2f4d !important;
+}
+
+.u-main-list .ant-list-item {
+  border-bottom: 1px solid #2c2f4d !important;
+}
+
+.u-main-list .ant-list-item-content > div {
+  color: white;
+  font-weight: bold;
 }
