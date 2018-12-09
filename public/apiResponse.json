@@ -8,11 +8,9 @@
     "startTime": "11:32:09 PM",
     "endTime": "11:32:44 PM",
     "screenPath": {
-      "dragNDrop": {
-        "AfterDrop": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
-        "BeforeDrag": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
-        "WelcomeScreen": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png"
-      }
+      "AfterDrop": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
+      "BeforeDrag": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
+      "WelcomeScreen": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png"
     },
     "deviceinfo": {
       "available": true,

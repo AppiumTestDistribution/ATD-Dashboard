@@ -60,12 +60,9 @@ export const fetchChartData = udid => async (dispatch, getState) => {
 export const fetchAllCapturedScreenshots = screenshots => async dispatch => {
   const capturedScreenshots = [];
   try {
-    const screenshotsUrl = Object.values(screenshots)[0];
-    for (var urlKey in screenshotsUrl) {
+    for (var urlKey in screenshots) {
       const key = urlKey;
-      const screenshot = await apiClient.fetchScreenshot(
-        screenshotsUrl[urlKey]
-      );
+      const screenshot = await apiClient.fetchScreenshot(screenshots[urlKey]);
       capturedScreenshots.push({ key, screenshot });
     }
     dispatch(handleSuccess(FETCH_CAPTURED_SCREENSHOTS, capturedScreenshots));
