@@ -1,10 +1,18 @@
 import axios from "axios";
 
+const getUrl = () => {
+  return process.env.REACT_APP_API_URL === "N"
+    ? "apiResponse.json"
+    : `${process.env.REACT_APP_HOSTNAME}:${
+        process.env.REACT_APP_PORT
+      }/testresults`;
+};
+
 export const apiClient = {
   fetchDashboardData: async () => {
     try {
       const response = await axios({
-        url: "apiResponse.json",
+        url: getUrl(),
         method: "GET",
         mode: "cors"
       });
