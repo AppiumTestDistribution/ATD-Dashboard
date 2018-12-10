@@ -1,18 +1,27 @@
 import axios from "axios";
+import { config } from "../config";
 
-const getUrl = () => {
+const { service } = config[process.env.REACT_APP_ENVIRONMENT];
+
+const { dashboard, env } = service;
+
+const getDashboardUrl = () => {
   return process.env.REACT_APP_API_URL === "N"
     ? "apiResponse.json"
-    : `${process.env.REACT_APP_HOSTNAME}:${
-        process.env.REACT_APP_PORT
-      }/testresults`;
+    : `${dashboard.hostname}:${dashboard.port}/testresults`;
+};
+
+const getEnvUrl = () => {
+  return process.env.REACT_APP_API_URL === "N"
+    ? "env.json"
+    : `${env.hostname}:${env.port}/env`;
 };
 
 export const apiClient = {
   fetchDashboardData: async () => {
     try {
       const response = await axios({
-        url: getUrl(),
+        url: getDashboardUrl(),
         method: "GET",
         mode: "cors"
       });
@@ -40,7 +49,7 @@ export const apiClient = {
   fetchRunnerDetail: async () => {
     try {
       const response = await axios({
-        url: "env.json",
+        url: getEnvUrl(),
         method: "GET",
         mode: "cors"
       });
