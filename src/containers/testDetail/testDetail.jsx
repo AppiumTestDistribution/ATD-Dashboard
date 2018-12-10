@@ -173,7 +173,8 @@ class TestDetail extends Component {
     Modal.error({
       title: "Error Detail",
       content: errorMessage,
-      width: "50%"
+      width: "50%",
+      height: "50%"
     });
   }
 
@@ -191,15 +192,16 @@ class TestDetail extends Component {
                   style={{ margin: "auto" }}
                   src={record.screenshot}
                   alt=""
-                  height="80%"
-                  width="80%"
+                  height="100%"
+                  width="100%"
                 />
               </div>
             ))}
           </Slider>
         </div>
       ),
-      width: "55%"
+      width: "50%",
+      height: "50%"
     });
   }
 
@@ -286,25 +288,23 @@ class TestDetail extends Component {
       content: (
         <img
           src={this.props.errorScreenshot}
+          style={{ margin: "auto" }}
           alt=""
           height="100%"
           width="100%"
         />
       ),
-      width: "50%"
+      width: "50%",
+      height: "50%"
     });
   }
 
   async showVideo(url) {
     Modal.error({
       title: "Video",
-      content: (
-        <ReactPlayer
-          url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-          playing
-        />
-      ),
-      width: "55%"
+      content: <ReactPlayer url={url} playing />,
+      width: "50%",
+      height: "50%"
     });
   }
 
@@ -318,7 +318,8 @@ class TestDetail extends Component {
           renderItem={item => <List.Item>{item}</List.Item>}
         />
       ),
-      width: "55%"
+      width: "50%",
+      height: "50%"
     });
   }
 
