@@ -11,6 +11,7 @@ import {
 import { NAME } from "./constant";
 import Icon from "../../components/icon/icon";
 import "./dashboard.css";
+import logo from "../../static/logo/ATD-Logo.png";
 
 const columns = [
   {
@@ -163,6 +164,31 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
+        <Row>
+          <Col span={20}>
+            <NavLink to="/">
+              <img
+                src={logo}
+                alt=""
+                height="60px"
+                width="60px"
+                style={{
+                  marginLeft: "20px"
+                }}
+              />
+            </NavLink>
+            <span
+              style={{
+                color: "white",
+                fontSize: "20px",
+                marginLeft: "10px",
+                fontWeight: "700"
+              }}
+            >
+              Dashboard
+            </span>
+          </Col>
+        </Row>
         <Row>
           <Col span={8} className="u-main-grid--color">
             <div className="u-main-chart-container">

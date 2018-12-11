@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Collapse, Table, Row, Col, Button, Modal, Tooltip, List } from "antd";
 import Slider from "react-slick";
+import { NavLink } from "react-router-dom";
 import _ from "lodash";
 import ReactPlayer from "react-player";
 import { NAME } from "./constant";
@@ -15,6 +16,7 @@ import {
 import Icon from "../../components/icon/icon";
 import "./testDetail.css";
 import Chart from "../../components/chart/chart";
+import logo from "../../static/logo/ATD-Logo.png";
 
 const Panel = Collapse.Panel;
 
@@ -326,6 +328,31 @@ class TestDetail extends Component {
   render() {
     return (
       <div>
+        <Row>
+          <Col span={20}>
+            <NavLink to="/">
+              <img
+                src={logo}
+                alt=""
+                height="60px"
+                width="60px"
+                style={{
+                  marginLeft: "20px"
+                }}
+              />
+            </NavLink>
+            <span
+              style={{
+                color: "white",
+                fontSize: "20px",
+                marginLeft: "10px",
+                fontWeight: "700"
+              }}
+            >
+              Dashboard
+            </span>
+          </Col>
+        </Row>
         <Row>
           <Col span={10} className="u-grid--color">
             <div className="u-chart-container">

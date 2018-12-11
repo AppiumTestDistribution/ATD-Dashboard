@@ -1,242 +1,18 @@
 [
   {
-    "_id": "5bff259d7032199105717c08",
-    "testresult": "Pass",
-    "testClassName": "DragnDropTest",
-    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5556__dragNDrop.txt",
-    "testMethodName": "dragNDrop",
-    "startTime": "11:32:09 PM",
-    "endTime": "11:32:44 PM",
-    "screenPath": {
-      "AfterDrop": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
-      "BeforeDrag": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
-      "WelcomeScreen": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png"
-    },
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "Not Supported",
-        "os": "android",
-        "available": false,
-        "screenSize": " 1440x2560",
-        "osVersion": "9",
-        "name": "google Android SDK built for x86_64\n",
-        "isDevice": true,
-        "deviceModel": "Android SDK built for x86_64\n",
-        "state": "Not Supported",
-        "udid": "emulator-5556",
-        "deviceManufacturer": "Google\n",
-        "brand": "google",
-        "apiLevel": "28"
-      },
-      "port": 55005
-    },
-    "status": "Completed"
-  },
-  {
-    "_id": "5bff259f7032199105717c09",
-    "testresult": "Pass",
-    "testClassName": "DragnDropTest",
-    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5554__dragNDrop.txt",
-    "testMethodName": "dragNDrop",
-    "startTime": "11:32:09 PM",
-    "endTime": "11:32:47 PM",
-    "screenPath": {},
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "Not Supported",
-        "os": "android",
-        "available": false,
-        "screenSize": " 1440x2560",
-        "osVersion": "8.0.0",
-        "name": "google Android SDK built for x86\n",
-        "isDevice": true,
-        "deviceModel": "Android SDK built for x86\n",
-        "state": "Not Supported",
-        "udid": "emulator-5554",
-        "deviceManufacturer": "Google\n",
-        "brand": "google",
-        "apiLevel": "26"
-      },
-      "port": 55004
-    },
-    "status": "Completed"
-  },
-  {
-    "_id": "5bff25b67032199105717c0a",
-    "testresult": "Pass",
-    "testClassName": "DragnDropTest",
-    "testMethodName": "dragNDrop",
-    "startTime": "11:32:09 PM",
-    "endTime": "11:33:10 PM",
-    "screenPath": {},
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "iOS 11.4",
-        "osVersion": "11.4",
-        "os": "iOS",
-        "name": "iPhone X",
-        "isDevice": false,
-        "available": true,
-        "deviceModel": "iPhone10,3",
-        "state": "Booted",
-        "udid": "C4D93681-4E89-4095-BEEF-E711F7B2A7AD",
-        "deviceManufacturer": "apple",
-        "brand": "Not Supported",
-        "apiLevel": "Not Supported"
-      },
-      "port": 55007
-    },
-    "status": "Completed"
-  },
-  {
-    "_id": "5bff25b67032199105717c0b",
-    "testresult": "Skip",
-    "testClassName": "SliderTest",
-    "testMethodName": "customDescriptionAndMaxRetriesTest",
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "Not Supported",
-        "os": "android",
-        "available": false,
-        "screenSize": " 1440x2560",
-        "osVersion": "9",
-        "name": "google Android SDK built for x86_64\n",
-        "isDevice": true,
-        "deviceModel": "Android SDK built for x86_64\n",
-        "state": "Not Supported",
-        "udid": "emulator-5556",
-        "deviceManufacturer": "Google\n",
-        "brand": "google",
-        "apiLevel": "28"
-      },
-      "port": 55005
-    },
-    "status": "Skipped"
-  },
-  {
-    "_id": "5bff25ba7032199105717c0c",
-    "testresult": "Skip",
-    "testClassName": "SliderTest",
-    "testMethodName": "customDescriptionAndMaxRetriesTest",
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "Not Supported",
-        "os": "android",
-        "available": false,
-        "screenSize": " 1440x2560",
-        "osVersion": "8.0.0",
-        "name": "google Android SDK built for x86\n",
-        "isDevice": true,
-        "deviceModel": "Android SDK built for x86\n",
-        "state": "Not Supported",
-        "udid": "emulator-5554",
-        "deviceManufacturer": "Google\n",
-        "brand": "google",
-        "apiLevel": "26"
-      },
-      "port": 55004
-    },
-    "status": "Skipped"
-  },
-  {
-    "_id": "5bff25c77032199105717c0d",
-    "testresult": "Pass",
-    "testClassName": "DragnDropTest",
-    "testMethodName": "dragNDrop",
-    "startTime": "11:32:09 PM",
-    "endTime": "11:33:27 PM",
-    "screenPath": {},
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "iOS 11.4",
-        "osVersion": "11.4",
-        "os": "iOS",
-        "name": "iPhone 6",
-        "isDevice": false,
-        "available": true,
-        "deviceModel": "iPhone7,2",
-        "state": "Booted",
-        "udid": "A4DCE564-192F-4941-9C9D-1DA55A781E0B",
-        "deviceManufacturer": "apple",
-        "brand": "Not Supported",
-        "apiLevel": "Not Supported"
-      },
-      "port": 55006
-    },
-    "status": "Completed"
-  },
-  {
-    "_id": "5bff25cc7032199105717c0e",
+    "_id": "5c0ef67294917527cfa97b32",
     "testresult": "Fail",
     "testClassName": "SliderTest",
-    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5556__customDescriptionAndMaxRetriesTest.txt",
-    "testException": "expected [true] but found [false]",
-    "testMethodName": "customDescriptionAndMaxRetriesTest",
-    "startTime": "11:33:10 PM",
-    "endTime": "11:33:31 PM",
-    "screenPath": {},
-    "screenShotFailure": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "Not Supported",
-        "os": "android",
-        "available": false,
-        "screenSize": " 1440x2560",
-        "osVersion": "9",
-        "name": "google Android SDK built for x86_64\n",
-        "isDevice": true,
-        "deviceModel": "Android SDK built for x86_64\n",
-        "state": "Not Supported",
-        "udid": "emulator-5556",
-        "deviceManufacturer": "Google\n",
-        "brand": "google",
-        "apiLevel": "28"
-      },
-      "port": 55005
-    },
-    "status": "Completed"
-  },
-  {
-    "_id": "5bff25cf7032199105717c0f",
-    "testresult": "Fail",
-    "testClassName": "SliderTest",
+    "dataProviderValue": [],
     "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5554__customDescriptionAndMaxRetriesTest.txt",
     "testException": "expected [true] but found [false]",
     "testMethodName": "customDescriptionAndMaxRetriesTest",
-    "startTime": "11:33:14 PM",
-    "endTime": "11:33:35 PM",
+    "startTime": "11:27:29 PM",
+    "endTime": "11:27:45 PM",
     "screenPath": {},
-    "screenShotFailure": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
+    "screenShotFailure": "http://192.168.254.21:4567/screenshot/android/emulator-5554/SliderTest/customDescriptionAndMaxRetriesTest/10_Dec__2018_11_27_46_PM-customDescriptionAndMaxRetriesTest_failed.jpeg",
     "deviceinfo": {
-      "available": true,
+      "available": false,
       "hostName": "127.0.0.1",
       "chromeDriverPort": 0,
       "localDevice": true,
@@ -246,97 +22,30 @@
         "available": false,
         "screenSize": " 1440x2560",
         "osVersion": "8.0.0",
-        "name": "google Android SDK built for x86\n",
+        "name": "google Android SDK built for x86 ",
         "isDevice": true,
-        "deviceModel": "Android SDK built for x86\n",
+        "deviceModel": "Android SDK built for x86 ",
         "state": "Not Supported",
         "udid": "emulator-5554",
-        "deviceManufacturer": "Google\n",
+        "deviceManufacturer": "Google ",
         "brand": "google",
         "apiLevel": "26"
       },
-      "port": 55004
+      "port": 52944
     },
     "status": "Completed"
   },
   {
-    "_id": "5bff25d17032199105717c10",
-    "testresult": "Fail",
-    "testClassName": "SliderTest",
-    "testException": "expected [true] but found [false]",
-    "testMethodName": "customDescriptionAndMaxRetriesTest",
-    "startTime": "11:33:11 PM",
-    "endTime": "11:33:36 PM",
-    "screenPath": {},
-    "screenShotFailure": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "iOS 11.4",
-        "osVersion": "11.4",
-        "os": "iOS",
-        "name": "iPhone X",
-        "isDevice": false,
-        "available": true,
-        "deviceModel": "iPhone10,3",
-        "state": "Booted",
-        "udid": "C4D93681-4E89-4095-BEEF-E711F7B2A7AD",
-        "deviceManufacturer": "apple",
-        "brand": "Not Supported",
-        "apiLevel": "Not Supported"
-      },
-      "port": 55007
-    },
-    "status": "Completed"
-  },
-  {
-    "_id": "5bff25df7032199105717c11",
+    "_id": "5c0ef67c94917527cfa97b33",
     "testresult": "Pass",
-    "testClassName": "SliderTest",
-    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5556__passTest.txt",
-    "testMethodName": "passTest",
-    "startTime": "11:33:33 PM",
-    "endTime": "11:33:51 PM",
+    "testClassName": "DragnDropTest",
+    "dataProviderValue": [],
+    "testMethodName": "dragNDrop",
+    "startTime": "11:27:09 PM",
+    "endTime": "11:27:56 PM",
     "screenPath": {},
     "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "Not Supported",
-        "os": "android",
-        "available": false,
-        "screenSize": " 1440x2560",
-        "osVersion": "9",
-        "name": "google Android SDK built for x86_64\n",
-        "isDevice": true,
-        "deviceModel": "Android SDK built for x86_64\n",
-        "state": "Not Supported",
-        "udid": "emulator-5556",
-        "deviceManufacturer": "Google\n",
-        "brand": "google",
-        "apiLevel": "28"
-      },
-      "port": 55005
-    },
-    "status": "Completed"
-  },
-  {
-    "_id": "5bff25e57032199105717c12",
-    "testresult": "Fail",
-    "testClassName": "SliderTest",
-    "testException": "expected [true] but found [false]",
-    "testMethodName": "customDescriptionAndMaxRetriesTest",
-    "startTime": "11:33:34 PM",
-    "endTime": "11:33:57 PM",
-    "screenPath": {},
-    "screenShotFailure": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Firefox_screenshot-404_error_in_Wikipedia.png",
-    "deviceinfo": {
-      "available": true,
+      "available": false,
       "hostName": "127.0.0.1",
       "chromeDriverPort": 0,
       "localDevice": true,
@@ -354,21 +63,22 @@
         "brand": "Not Supported",
         "apiLevel": "Not Supported"
       },
-      "port": 55006
+      "port": 52945
     },
     "status": "Completed"
   },
   {
-    "_id": "5bff25e87032199105717c13",
+    "_id": "5c0ef68294917527cfa97b34",
     "testresult": "Pass",
     "testClassName": "SliderTest",
-    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5554__passTest.txt",
-    "testMethodName": "passTest",
-    "startTime": "11:33:36 PM",
-    "endTime": "11:34:00 PM",
+    "dataProviderValue": ["saikrishna", "password"],
+    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5554__dataProviderTest.txt",
+    "testMethodName": "dataProviderTest",
+    "startTime": "11:27:47 PM",
+    "endTime": "11:28:01 PM",
     "screenPath": {},
     "deviceinfo": {
-      "available": true,
+      "available": false,
       "hostName": "127.0.0.1",
       "chromeDriverPort": 0,
       "localDevice": true,
@@ -378,29 +88,30 @@
         "available": false,
         "screenSize": " 1440x2560",
         "osVersion": "8.0.0",
-        "name": "google Android SDK built for x86\n",
+        "name": "google Android SDK built for x86 ",
         "isDevice": true,
-        "deviceModel": "Android SDK built for x86\n",
+        "deviceModel": "Android SDK built for x86 ",
         "state": "Not Supported",
         "udid": "emulator-5554",
-        "deviceManufacturer": "Google\n",
+        "deviceManufacturer": "Google ",
         "brand": "google",
         "apiLevel": "26"
       },
-      "port": 55004
+      "port": 52944
     },
     "status": "Completed"
   },
   {
-    "_id": "5bff25ed7032199105717c14",
+    "_id": "5c0ef69194917527cfa97b35",
     "testresult": "Pass",
     "testClassName": "SliderTest",
-    "testMethodName": "passTest",
-    "startTime": "11:33:37 PM",
-    "endTime": "11:34:05 PM",
+    "dataProviderValue": [],
+    "testMethodName": "failureTest",
+    "startTime": "11:27:57 PM",
+    "endTime": "01:00:00 AM",
     "screenPath": {},
     "deviceinfo": {
-      "available": true,
+      "available": false,
       "hostName": "127.0.0.1",
       "chromeDriverPort": 0,
       "localDevice": true,
@@ -408,85 +119,28 @@
         "deviceType": "iOS 11.4",
         "osVersion": "11.4",
         "os": "iOS",
-        "name": "iPhone X",
+        "name": "iPhone 6",
         "isDevice": false,
         "available": true,
-        "deviceModel": "iPhone10,3",
+        "deviceModel": "iPhone7,2",
         "state": "Booted",
-        "udid": "C4D93681-4E89-4095-BEEF-E711F7B2A7AD",
+        "udid": "A4DCE564-192F-4941-9C9D-1DA55A781E0B",
         "deviceManufacturer": "apple",
         "brand": "Not Supported",
         "apiLevel": "Not Supported"
       },
-      "port": 55007
+      "port": 52945
     },
     "status": "Completed"
   },
   {
-    "_id": "5bff25f07032199105717c15",
+    "_id": "5c0ef69194917527cfa97b36",
     "testresult": "Skip",
     "testClassName": "SliderTest",
-    "testMethodName": "skipTest",
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "Not Supported",
-        "os": "android",
-        "available": false,
-        "screenSize": " 1440x2560",
-        "osVersion": "9",
-        "name": "google Android SDK built for x86_64\n",
-        "isDevice": true,
-        "deviceModel": "Android SDK built for x86_64\n",
-        "state": "Not Supported",
-        "udid": "emulator-5556",
-        "deviceManufacturer": "Google\n",
-        "brand": "google",
-        "apiLevel": "28"
-      },
-      "port": 55005
-    },
-    "status": "Skipped"
-  },
-  {
-    "_id": "5bff25fd7032199105717c16",
-    "testresult": "Skip",
-    "testClassName": "SliderTest",
-    "testMethodName": "skipTest",
-    "deviceinfo": {
-      "available": true,
-      "hostName": "127.0.0.1",
-      "chromeDriverPort": 0,
-      "localDevice": true,
-      "device": {
-        "deviceType": "Not Supported",
-        "os": "android",
-        "available": false,
-        "screenSize": " 1440x2560",
-        "osVersion": "8.0.0",
-        "name": "google Android SDK built for x86\n",
-        "isDevice": true,
-        "deviceModel": "Android SDK built for x86\n",
-        "state": "Not Supported",
-        "udid": "emulator-5554",
-        "deviceManufacturer": "Google\n",
-        "brand": "google",
-        "apiLevel": "26"
-      },
-      "port": 55004
-    },
-    "status": "Skipped"
-  },
-  {
-    "_id": "5bff26017032199105717c17",
-    "testresult": "Pass",
-    "testClassName": "SliderTest",
-    "testMethodName": "passTest",
-    "startTime": "11:34:03 PM",
-    "endTime": "11:34:25 PM",
+    "dataProviderValue": [],
+    "testMethodName": "failureTest",
+    "startTime": "11:27:57 PM",
+    "endTime": "11:28:17 PM",
     "screenPath": {},
     "deviceinfo": {
       "available": true,
@@ -507,45 +161,88 @@
         "brand": "Not Supported",
         "apiLevel": "Not Supported"
       },
-      "port": 55006
+      "port": 52945
     },
     "status": "Completed"
   },
   {
-    "_id": "5bff26077032199105717c18",
+    "_id": "5c0ef69294917527cfa97b37",
+    "testresult": "Pass",
+    "testClassName": "SliderTest",
+    "dataProviderValue": ["srini", "password"],
+    "adbLogs": "/Users/saikrisv/git/AppiumTestDistribution/target/adblogs/emulator-5554__dataProviderTest.txt",
+    "testMethodName": "dataProviderTest",
+    "startTime": "11:28:02 PM",
+    "endTime": "11:28:18 PM",
+    "screenPath": {},
+    "deviceinfo": {
+      "available": false,
+      "hostName": "127.0.0.1",
+      "chromeDriverPort": 0,
+      "localDevice": true,
+      "device": {
+        "deviceType": "Not Supported",
+        "os": "android",
+        "available": false,
+        "screenSize": " 1440x2560",
+        "osVersion": "8.0.0",
+        "name": "google Android SDK built for x86 ",
+        "isDevice": true,
+        "deviceModel": "Android SDK built for x86 ",
+        "state": "Not Supported",
+        "udid": "emulator-5554",
+        "deviceManufacturer": "Google ",
+        "brand": "google",
+        "apiLevel": "26"
+      },
+      "port": 52944
+    },
+    "status": "Completed"
+  },
+  {
+    "_id": "5c0ef6a594917527cfa97b38",
     "testresult": "Skip",
     "testClassName": "SliderTest",
+    "dataProviderValue": [],
     "testMethodName": "skipTest",
+    "startTime": "11:28:19 PM",
+    "endTime": "11:28:36 PM",
+    "screenPath": {},
     "deviceinfo": {
       "available": true,
       "hostName": "127.0.0.1",
       "chromeDriverPort": 0,
       "localDevice": true,
       "device": {
-        "deviceType": "iOS 11.4",
-        "osVersion": "11.4",
-        "os": "iOS",
-        "name": "iPhone X",
-        "isDevice": false,
-        "available": true,
-        "deviceModel": "iPhone10,3",
-        "state": "Booted",
-        "udid": "C4D93681-4E89-4095-BEEF-E711F7B2A7AD",
-        "deviceManufacturer": "apple",
-        "brand": "Not Supported",
-        "apiLevel": "Not Supported"
+        "deviceType": "Not Supported",
+        "os": "android",
+        "available": false,
+        "screenSize": " 1440x2560",
+        "osVersion": "8.0.0",
+        "name": "google Android SDK built for x86 ",
+        "isDevice": true,
+        "deviceModel": "Android SDK built for x86 ",
+        "state": "Not Supported",
+        "udid": "emulator-5554",
+        "deviceManufacturer": "Google ",
+        "brand": "google",
+        "apiLevel": "26"
       },
-      "port": 55007
+      "port": 52944
     },
-    "status": "Skipped"
+    "status": "Completed"
   },
   {
-    "_id": "5bff26147032199105717c19",
-    "testresult": "Skip",
+    "_id": "5c0ef6a694917527cfa97b39",
+    "testresult": "Pass",
     "testClassName": "SliderTest",
-    "testMethodName": "skipTest",
+    "dataProviderValue": [],
+    "testMethodName": "passTest",
+    "startTime": "11:28:17 PM",
+    "endTime": "11:28:38 PM",
+    "screenPath": {},
     "deviceinfo": {
-      "available": true,
+      "available": false,
       "hostName": "127.0.0.1",
       "chromeDriverPort": 0,
       "localDevice": true,
@@ -563,8 +260,8 @@
         "brand": "Not Supported",
         "apiLevel": "Not Supported"
       },
-      "port": 55006
+      "port": 52945
     },
-    "status": "Skipped"
+    "status": "Completed"
   }
 ]
