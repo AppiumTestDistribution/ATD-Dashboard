@@ -47,11 +47,11 @@ const findTotalDuration = methodList => {
   const startTime = methodList[0].startTime;
   const endDate = methodList[methodList.length - 1].endTime;
 
-  var timeDiff = moment(endDate, "hh:mm:ss a").diff(
+  const timeDiff = moment(endDate, "hh:mm:ss a").diff(
     moment(startTime, "hh:mm:ss a")
   );
-  var duration = moment.duration(timeDiff);
-  var timeDuration =
+  const duration = moment.duration(timeDiff);
+  const timeDuration =
     "0" + Math.floor(duration.asHours()) + moment(timeDiff).format(":mm:ss");
   return timeDuration;
 };
