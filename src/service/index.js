@@ -14,7 +14,7 @@ const getDashboardUrl = () => {
 const getEnvUrl = () => {
   return process.env.REACT_APP_API_URL === "N"
     ? "env.json"
-    : `${env.hostname}:${env.port}/env`;
+    : `${env.hostname}:${env.port}/envInfo`;
 };
 
 export const apiClient = {
