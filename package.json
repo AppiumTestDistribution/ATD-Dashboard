@@ -43,7 +43,7 @@
     "moment": "^2.22.2",
     "node-sass": "^4.10.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
-    "pnp-webpack-plugin": "1.1.0",
+    "pnp-webpack-plugin": "1.4.3",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.0.6",
